@@ -101,17 +101,17 @@ section{padding:96px 56px}
 .s-sub{font-size:16px;color:var(--muted);line-height:1.75;max-width:580px}
 
 /* NUMBERS */
-#numbers{background:var(--bg2)}
+#numbers{background:var(--bg2);padding:72px 56px}
 .nums-header{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:end;margin-bottom:80px}
 .nums-section{margin-bottom:40px}
 .nums-section:last-child{margin-bottom:0}
-.nums-group-hd{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);padding:10px 0;margin-bottom:1px}
-.nums-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border)}
-.num-cell{background:var(--bg2);padding:40px 32px;border:1px solid transparent;transition:background .2s,border-color .2s}
+.nums-group-hd{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--border);display:block;/* override */font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);padding:10px 0;margin-bottom:1px}
+.nums-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border2)}
+.num-cell{background:var(--bg2);padding:24px 22px;border:1px solid transparent;transition:background .2s,border-color .2s}
 .num-cell:hover{background:var(--bg3);border-color:var(--border2)}
 .num-big{font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(26px,3vw,40px);letter-spacing:-2px;color:var(--gold);line-height:1;margin-bottom:6px}
-.num-label{font-size:13px;color:var(--muted);font-weight:500;line-height:1.4}
-.num-note{font-size:10px;color:var(--dim);margin-top:4px;font-family:'Space Mono',monospace}
+.num-label{font-size:12px;color:var(--muted);font-weight:500;line-height:1.35}
+.num-note{font-size:9px;color:var(--dim);margin-top:3px;font-family:'Space Mono',monospace}
 
 /* PLATFORM BARS */
 .platform-section{background:var(--bg3);padding:48px 56px;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
@@ -171,7 +171,7 @@ section{padding:96px 56px}
 
 /* ABOUT */
 #about{background:var(--bg2)}
-.about-grid{display:grid;grid-template-columns:1fr;gap:0;align-items:start;margin-top:52px;max-width:780px}
+.about-grid{display:grid;grid-template-columns:3fr 2fr;gap:64px;align-items:start;margin-top:52px}
 .about-hl{font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(22px,3vw,32px);letter-spacing:-1px;line-height:1.25;color:var(--white);margin-bottom:24px}
 .about-hl span{color:var(--gold)}
 .about-body p{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:16px}
@@ -252,7 +252,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:28px 56px
   .scope-top{grid-template-columns:1fr;gap:28px}
   .scope-cell{padding:36px 28px}
   .brands-grid{grid-template-columns:repeat(2,1fr)}
-  .about-grid{grid-template-columns:1fr;gap:36px}
+  .about-grid{grid-template-columns:1fr!important;gap:36px}
   .contact-grid{grid-template-columns:1fr;gap:36px}
   section{padding:72px 24px}
   footer{padding:22px 24px;flex-direction:column;gap:10px;text-align:center}
@@ -450,7 +450,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:28px 56px
         <div class="num-cell">
           <div class="num-big">7,800+</div>
           <div class="num-label">Franchise leads generated</div>
-          <div class="num-note">Across 3 brands simultaneously</div>
+          <div class="num-note">BW: 7,384 leads · 2 additional brands</div>
         </div>
         <div class="num-cell">
           <div class="num-big">CA$7.28</div>
@@ -463,9 +463,9 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:28px 56px
           <div class="num-note">GoHighLevel + Freshsales</div>
         </div>
         <div class="num-cell">
-          <div class="num-big">3</div>
-          <div class="num-label">Brand accounts managed simultaneously</div>
-          <div class="num-note">QSR franchises across Canada</div>
+          <div class="num-big">1+2</div>
+          <div class="num-label">Brands — 1 full-scope + 2 lead gen</div>
+          <div class="num-note">Boardwalk (full) + 2 franchise lead gen</div>
         </div>
       </div>
     </div>
@@ -582,7 +582,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:28px 56px
         <span class="case-cat">Lead Generation · Meta · Google</span>
       </div>
       <div class="case-body">
-        <div class="case-brand">Multi-Brand — 3 QSR Franchises</div>
+        <div class="case-brand">Boardwalk Burgers + 2 Confidential QSR Brands</div>
         <h3 class="case-title">Franchise Lead Gen — 7,800+ Leads at CA$7.28 CPL</h3>
         <p class="case-desc">Built and managed franchise lead generation pipelines across 3 brands simultaneously. Industry average runs CA$30–80+ per lead. Achieved CA$7.28 blended CPL — over 4x more efficient — through creative testing, audience refinement, and location-specific targeting.</p>
         <div class="case-metrics">
@@ -669,7 +669,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:28px 56px
       <ul class="scope-list">
         <li>845 campaigns across Meta, TikTok, Google & LinkedIn — certified on both Meta & Google</li>
         <li>22 location-level ad sets per LTO; CA$7.28 avg CPL vs. CA$30–80+ industry benchmark</li>
-        <li>Full-funnel ownership: awareness, lead gen, retargeting, and conversion — simultaneously across 3 brands</li>
+        <li>Full-funnel ownership: awareness, lead gen, retargeting, and conversion — Boardwalk (full scope) + franchise lead gen for 2 additional brands</li>
       </ul>
     </div>
     <div class="scope-cell">
@@ -731,7 +731,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:28px 56px
       <div>
         <div class="brand-name">2 Confidential Franchise Brands</div>
         <div class="brand-type">QSR — Multi-Location, Canada</div>
-        <div class="brand-desc">Franchise lead gen managed simultaneously. 3 brand accounts in parallel.</div>
+        <div class="brand-desc">Franchise lead generation campaigns managed via Meta. Separate from primary Boardwalk scope.</div>
       </div>
     </div>
     <div class="brand-card">
@@ -786,6 +786,29 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:28px 56px
         <span style="background:var(--bg3);border:1px solid var(--border2);color:var(--muted);font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:6px 14px">LinkedIn Ads</span>
         <span style="background:var(--bg3);border:1px solid var(--border2);color:var(--muted);font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:6px 14px">GoHighLevel</span>
         <span style="background:var(--bg3);border:1px solid var(--border2);color:var(--muted);font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:6px 14px">GA4</span>
+      </div>
+    </div>
+    <div class="about-cards reveal">
+      <div class="about-card">
+        <div class="about-card-label">Product Origin</div>
+        <div class="about-card-text">Conceptualized <strong>Canada's first sweet and spicy beef + chicken duo burger</strong> on-site during a product shoot — turned it into a co-funded hero campaign with Tabasco and Coca-Cola as brand partners.</div>
+      </div>
+      <div class="about-card">
+        <div class="about-card-label">What I've Built</div>
+        <div class="about-card-text">
+          <strong>GHL + Freshsales CRM</strong> — from zero to 25K+ contacts<br>
+          <strong>Diner on Demand</strong> — loyalty program, 0 to 15K members<br>
+          <strong>ClickUp systems</strong> — franchise request routing + influencer tracking<br>
+          <strong>Lead gen pipelines</strong> — 7,800+ franchise leads across brands
+        </div>
+      </div>
+      <div class="about-card">
+        <div class="about-card-label">Recognition</div>
+        <div class="about-card-text">
+          Semi-Finalist — <strong>Unilever Business Talent Hunt</strong> (2019)<br>
+          Semi-Finalist — <strong>L'Oréal National Brandstorm</strong> (2019)<br>
+          ClickUp Power User — <strong>Top 10% Globally</strong>
+        </div>
       </div>
     </div>
   </div>
