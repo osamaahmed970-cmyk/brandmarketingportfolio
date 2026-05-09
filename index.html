@@ -103,18 +103,15 @@ section{padding:96px 56px}
 /* NUMBERS */
 #numbers{background:var(--bg2)}
 .nums-header{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:end;margin-bottom:80px}
-.nums-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border)}
-.num-cell{background:var(--bg2);padding:56px 52px;border:1px solid transparent;transition:background .2s,border-color .2s}
+.nums-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border)}
+.num-cell{background:var(--bg2);padding:48px 36px;border:1px solid transparent;transition:background .2s,border-color .2s}
 .num-cell:hover{background:var(--bg3);border-color:var(--border2)}
-.num-big{font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(48px,5.5vw,72px);letter-spacing:-3px;color:var(--gold);line-height:1;margin-bottom:12px}
-.num-label{font-size:13px;color:var(--white);font-weight:700;letter-spacing:-.2px;line-height:1.3;margin-bottom:10px}
-.num-context{font-size:13px;color:var(--muted);line-height:1.65}
-.metrics-bar{display:flex;align-items:stretch;background:var(--bg3);border-top:1px solid var(--border)}
-.metric-item{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:22px 12px;border-right:1px solid var(--border);text-align:center;transition:background .2s}
-.metric-item:last-child{border-right:none}
-.metric-item:hover{background:var(--bg2)}
-.metric-num{font-family:'Archivo',sans-serif;font-weight:900;font-size:16px;color:var(--gold);letter-spacing:-.5px;line-height:1;margin-bottom:5px}
-.metric-label{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;line-height:1.35}
+.num-hero{background:var(--bg3)}
+.num-hero:hover{background:var(--bg4)}
+.nums-divider{grid-column:1/-1;height:1px;background:var(--gold2);opacity:.2}
+.num-big{font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(28px,3.5vw,44px);letter-spacing:-2px;color:var(--gold);line-height:1;margin-bottom:6px}
+.num-label{font-size:13px;color:var(--muted);font-weight:500;line-height:1.4}
+.num-note{font-size:10px;color:var(--dim);margin-top:4px;font-family:'Space Mono',monospace}
 
 /* PLATFORM BARS */
 .platform-section{background:var(--bg3);padding:48px 56px;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
@@ -174,7 +171,7 @@ section{padding:96px 56px}
 
 /* ABOUT */
 #about{background:var(--bg2)}
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;margin-top:52px}
+.about-grid{display:grid;grid-template-columns:3fr 2fr;gap:80px;align-items:start;margin-top:52px}
 .about-hl{font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(22px,3vw,32px);letter-spacing:-1px;line-height:1.25;color:var(--white);margin-bottom:24px}
 .about-hl span{color:var(--gold)}
 .about-body p{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:16px}
@@ -190,7 +187,7 @@ section{padding:96px 56px}
 
 /* CONTACT */
 #contact{background:var(--bg3)}
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;margin-top:52px}
+.contact-grid{display:grid;grid-template-columns:1fr;gap:80px;align-items:center;margin-top:52px;max-width:640px}
 .contact-hl{font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(38px,5.5vw,68px);letter-spacing:-3px;line-height:.95;color:var(--white);margin-bottom:22px}
 .contact-hl span{color:var(--gold)}
 .contact-sub{font-size:15px;color:var(--muted);line-height:1.75;margin-bottom:32px}
@@ -232,7 +229,8 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:28px 56px
   .hero-right{display:grid;grid-template-columns:1fr 1fr;gap:16px}
   .hero-photo{display:none}
   .nums-header{grid-template-columns:1fr;gap:24px}
-  .num-cell{padding:44px 36px}
+  .nums-grid{grid-template-columns:repeat(2,1fr)}
+  .num-cell{padding:36px 28px}
   .platform-bars{grid-template-columns:1fr}
   .platform-section{padding:48px 24px}
   .cases-grid{grid-template-columns:1fr}
@@ -240,15 +238,13 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:28px 56px
   .scope-cell{padding:36px 28px}
   .brands-grid{grid-template-columns:repeat(2,1fr)}
   .about-grid{grid-template-columns:1fr;gap:36px}
-  .contact-grid{grid-template-columns:1fr;gap:36px}
+  .contact-grid{gap:36px}
   section{padding:72px 24px}
   footer{padding:22px 24px;flex-direction:column;gap:10px;text-align:center}
 }
 @media(max-width:640px){
   .nums-grid{grid-template-columns:1fr}
-  .num-cell{padding:36px 28px}
-  .metrics-bar{flex-wrap:wrap}
-  .metric-item{flex:0 0 25%;border-bottom:1px solid var(--border)}
+  .num-cell{padding:28px 22px}
   .scope-grid{grid-template-columns:1fr}
   .brands-grid{grid-template-columns:1fr}
   .stat-pills{grid-template-columns:1fr 1fr}
@@ -383,59 +379,66 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:28px 56px
     <p class="s-sub">Every number below is tracked — through platform analytics, POS systems, or GA4. No estimates, no rounding up.</p>
   </div>
   <div class="nums-grid reveal">
-    <div class="num-cell">
+    <div class="num-cell num-hero">
       <div class="num-big">CA$370K+</div>
-      <div class="num-label">Ad Spend Managed</div>
-      <div class="num-context">Managed across Meta, Google & TikTok — with full strategy, targeting, and optimization ownership across all three platforms.</div>
+      <div class="num-label">Total ad spend managed across Meta, Google & TikTok</div>
+      <div class="num-note">Oct 2023 – May 2026</div>
     </div>
-    <div class="num-cell">
+    <div class="num-cell num-hero">
       <div class="num-big">116M+</div>
-      <div class="num-label">Total Impressions Delivered</div>
-      <div class="num-context">Across national brand awareness and hyper-local campaigns — reaching 27.7M unique people on Meta alone.</div>
+      <div class="num-label">Total impressions delivered across all platforms</div>
+      <div class="num-note">Meta 66.6M · Google 24.7M · TikTok 25.5M</div>
     </div>
-    <div class="num-cell">
+    <div class="num-cell num-hero">
       <div class="num-big">7,800+</div>
-      <div class="num-label">Franchise Leads Generated</div>
-      <div class="num-context">At a CA$7.28 blended CPL — more than 4× more efficient than the CA$30–80+ industry average, across 3 brands simultaneously.</div>
+      <div class="num-label">Franchise leads generated across 3 brands</div>
+      <div class="num-note">CA$7.28 avg CPL vs $30–80+ industry</div>
     </div>
+    <div class="nums-divider"></div>
     <div class="num-cell">
       <div class="num-big">256%</div>
-      <div class="num-label">YoY Website User Growth</div>
-      <div class="num-context">Year-over-year growth in active users, alongside 601% growth in tracked key events — built from a standing start with zero prior infrastructure.</div>
+      <div class="num-label">YoY growth in website active users</div>
+      <div class="num-note">176K active users · 601% key events growth</div>
     </div>
-  </div>
-  <div class="metrics-bar reveal">
-    <div class="metric-item">
-      <div class="metric-num">130K+</div>
-      <div class="metric-label">Conversions Tracked</div>
+    <div class="num-cell">
+      <div class="num-big">130K+</div>
+      <div class="num-label">Conversions tracked — Google alone</div>
+      <div class="num-note">PMAX: 115,977 at CA$0.14 CPC</div>
     </div>
-    <div class="metric-item">
-      <div class="metric-num">725K+</div>
-      <div class="metric-label">Total Clicks</div>
+    <div class="num-cell">
+      <div class="num-big">725K+</div>
+      <div class="num-label">Total clicks driven across all platforms</div>
+      <div class="num-note">Meta + Google + TikTok combined</div>
     </div>
-    <div class="metric-item">
-      <div class="metric-num">15K+</div>
-      <div class="metric-label">Loyalty Members</div>
+    <div class="num-cell">
+      <div class="num-big">15K+</div>
+      <div class="num-label">Loyalty program members — built from zero</div>
+      <div class="num-note">Diner on Demand · GHL · Freshsales</div>
     </div>
-    <div class="metric-item">
-      <div class="metric-num">250+</div>
-      <div class="metric-label">Creators Worked With</div>
+    <div class="num-cell">
+      <div class="num-big">250+</div>
+      <div class="num-label">Creators and influencers worked with</div>
+      <div class="num-note">Briefing · UGC · Paid amplification</div>
     </div>
-    <div class="metric-item">
-      <div class="metric-num">20+</div>
-      <div class="metric-label">Events Executed</div>
+    <div class="num-cell">
+      <div class="num-big">20+</div>
+      <div class="num-label">Grand openings & brand activations executed</div>
+      <div class="num-note">End-to-end per event — full production</div>
     </div>
-    <div class="metric-item">
-      <div class="metric-num">5.6x</div>
-      <div class="metric-label">ROAS — Poutine Day</div>
+    <div class="num-cell">
+      <div class="num-big">5.6x</div>
+      <div class="num-label">ROAS — Poutine Day 2026</div>
+      <div class="num-note">$0.89 cost per redemption vs $3–8+ benchmark</div>
     </div>
-    <div class="metric-item">
-      <div class="metric-num">25K+</div>
-      <div class="metric-label">CRM Contacts</div>
+    <div class="num-cell">
+      <div class="num-big">25K+</div>
+      <div class="num-label">CRM contacts built from scratch</div>
+      <div class="num-note">GoHighLevel + Freshsales</div>
     </div>
-    <div class="metric-item">
-      <div class="metric-num">3</div>
-      <div class="metric-label">Brands Simultaneously</div>
+    <div class="num-cell">
+      <div class="num-big">3</div>
+      <div class="num-label">Brand accounts managed simultaneously</div>
+      <div class="num-note">QSR franchises across Canada</div>
     </div>
   </div>
 </section>
@@ -641,7 +644,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:28px 56px
       </ul>
     </div>
     <div class="scope-cell">
-      <div class="scope-stat">3 Brands Built</div>
+      <div class="scope-stat">20+ Launches</div>
       <div class="scope-cell-h">Brand & Creative</div>
       <ul class="scope-list">
         <li>Originated Sweet Heat on-set — turned it into a co-funded Tabasco × Coca-Cola campaign</li>
@@ -660,7 +663,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:28px 56px
     </div>
     <div class="scope-cell">
       <div class="scope-stat">25K+ Contacts</div>
-      <div class="scope-cell-h">Systems & Operations</div>
+      <div class="scope-cell-h">Systems Built</div>
       <ul class="scope-list">
         <li>Built GHL CRM + Freshsales from zero — 25K+ contacts, 15K+ Diner on Demand loyalty members</li>
         <li>ClickUp ticket system routing franchise requests across 24+ operators nationwide</li>
@@ -753,28 +756,6 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:28px 56px
         <div class="about-card-label">Product Origin Story</div>
         <div class="about-card-text">Conceptualized <strong>Canada's first sweet and spicy beef + chicken duo burger</strong> during a product shoot — and turned it into the hero of a fully co-funded campaign with Tabasco and Coca-Cola.</div>
       </div>
-      <div class="about-card">
-        <div class="about-card-label">Education</div>
-        <div class="about-card-text">
-          <strong>Postgrad — Marketing Management</strong>, Sheridan College (2024)<br>
-          <strong>Postgrad — Advertising & Account Mgmt</strong>, Sheridan College (2023)<br>
-          <strong>BBA — Marketing</strong>, IobM Karachi (2019)
-        </div>
-      </div>
-      <div class="about-card">
-        <div class="about-card-label">Certifications</div>
-        <div class="about-card-text">
-          <strong>Meta Certified Digital Marketing Associate</strong> · Google Ads · Google Analytics (GA4) · HubSpot Marketing Software · LinkedIn Marketing Solutions Fundamentals · LinkedIn Marketing Strategy
-        </div>
-      </div>
-      <div class="about-card">
-        <div class="about-card-label">Recognition</div>
-        <div class="about-card-text">
-          Semi-Finalist — <strong>Unilever National Business Talent Hunt</strong> (2019)<br>
-          Semi-Finalist — <strong>L'Oréal National Brandstorm</strong> (2019)<br>
-          Shortlisted — <strong>Battle of Minds</strong> (2019) · ClickUp Power User — <strong>Top 10% Globally</strong>
-        </div>
-      </div>
     </div>
   </div>
 </section>
@@ -791,10 +772,6 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:28px 56px
           <div class="c-icon">✉</div>
           <div><div class="c-label">Email</div><div class="c-val">osamaahmed.ext@gmail.com</div></div>
         </a>
-        <a href="tel:6476738118" class="c-link">
-          <div class="c-icon">📞</div>
-          <div><div class="c-label">Phone</div><div class="c-val">(647) 673-8118</div></div>
-        </a>
         <a href="https://www.linkedin.com/in/osamaahmed-brandmarketing/" target="_blank" class="c-link">
           <div class="c-icon" style="font-size:12px;font-weight:800">in</div>
           <div><div class="c-label">LinkedIn</div><div class="c-val">osamaahmed-brandmarketing</div></div>
@@ -802,24 +779,13 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:28px 56px
       </div>
     </div>
 
-    <div class="reveal">
-      <div class="avail"><div class="avail-dot"></div><span class="avail-text">Open to new opportunities — Toronto / Hamilton, ON</span></div>
-      <p style="font-size:11px;color:var(--muted);font-family:'Space Mono',monospace;letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px">Looking for</p>
-      <div class="looking-for">
-        <div class="lf-row"><div class="lf-num">01</div><div class="lf-text"><strong>Brand Manager</strong>&nbsp;— QSR / Food Brand</div></div>
-        <div class="lf-row"><div class="lf-num">02</div><div class="lf-text"><strong>Marketing Manager</strong>&nbsp;— Franchise</div></div>
-        <div class="lf-row"><div class="lf-num">03</div><div class="lf-text"><strong>Sr. Paid Social Specialist</strong>&nbsp;— Agency</div></div>
-        <div class="lf-row"><div class="lf-num">04</div><div class="lf-text"><strong>Partner Marketing</strong>&nbsp;— UberEats / DoorDash / Skip</div></div>
-        <div class="lf-row"><div class="lf-num">05</div><div class="lf-text"><strong>Marketing Coordinator</strong>&nbsp;— High-Growth QSR</div></div>
-      </div>
-    </div>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
   <div class="foot-copy">© 2026 <span>Osama Ahmed</span> — Built on real data, not templates.</div>
-  <div class="foot-copy">Toronto, ON · <span>(647) 673-8118</span></div>
+  <div class="foot-copy">Toronto, ON</div>
 </footer>
 
 <script>
