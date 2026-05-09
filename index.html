@@ -103,13 +103,13 @@ section{padding:96px 56px}
 /* NUMBERS */
 #numbers{background:var(--bg2)}
 .nums-header{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:end;margin-bottom:80px}
-.nums-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border)}
-.num-cell{background:var(--bg2);padding:48px 36px;border:1px solid transparent;transition:background .2s,border-color .2s}
+.nums-section{margin-bottom:40px}
+.nums-section:last-child{margin-bottom:0}
+.nums-group-hd{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);padding:10px 0;margin-bottom:1px}
+.nums-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border)}
+.num-cell{background:var(--bg2);padding:40px 32px;border:1px solid transparent;transition:background .2s,border-color .2s}
 .num-cell:hover{background:var(--bg3);border-color:var(--border2)}
-.num-hero{background:var(--bg3)}
-.num-hero:hover{background:var(--bg4)}
-.nums-divider{grid-column:1/-1;height:1px;background:var(--gold2);opacity:.2}
-.num-big{font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(28px,3.5vw,44px);letter-spacing:-2px;color:var(--gold);line-height:1;margin-bottom:6px}
+.num-big{font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(26px,3vw,40px);letter-spacing:-2px;color:var(--gold);line-height:1;margin-bottom:6px}
 .num-label{font-size:13px;color:var(--muted);font-weight:500;line-height:1.4}
 .num-note{font-size:10px;color:var(--dim);margin-top:4px;font-family:'Space Mono',monospace}
 
@@ -133,7 +133,7 @@ section{padding:96px 56px}
 .cases-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:56px}
 .case{background:var(--bg2);border:1px solid var(--border);overflow:hidden;transition:border-color .3s,transform .3s;cursor:default}
 .case:hover{border-color:var(--gold);transform:translateY(-4px)}
-.case-img-wrap{position:relative;overflow:hidden;height:220px}
+.case-img-wrap{position:relative;overflow:hidden;aspect-ratio:1/1}
 .case-img-wrap img{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(.8);transition:filter .4s,transform .5s}
 .case:hover .case-img-wrap img{filter:brightness(1);transform:scale(1.05)}
 .case-img-placeholder{width:100%;height:220px;display:flex;align-items:center;justify-content:center;position:relative}
@@ -171,7 +171,7 @@ section{padding:96px 56px}
 
 /* ABOUT */
 #about{background:var(--bg2)}
-.about-grid{display:grid;grid-template-columns:3fr 2fr;gap:80px;align-items:start;margin-top:52px}
+.about-grid{display:grid;grid-template-columns:1fr;gap:0;align-items:start;margin-top:52px;max-width:780px}
 .about-hl{font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(22px,3vw,32px);letter-spacing:-1px;line-height:1.25;color:var(--white);margin-bottom:24px}
 .about-hl span{color:var(--gold)}
 .about-body p{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:16px}
@@ -187,7 +187,7 @@ section{padding:96px 56px}
 
 /* CONTACT */
 #contact{background:var(--bg3)}
-.contact-grid{display:grid;grid-template-columns:1fr;gap:80px;align-items:center;margin-top:52px;max-width:640px}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;margin-top:52px}
 .contact-hl{font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(38px,5.5vw,68px);letter-spacing:-3px;line-height:.95;color:var(--white);margin-bottom:22px}
 .contact-hl span{color:var(--gold)}
 .contact-sub{font-size:15px;color:var(--muted);line-height:1.75;margin-bottom:32px}
@@ -245,7 +245,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:28px 56px
   .hero-photo{display:none}
   .nums-header{grid-template-columns:1fr;gap:24px}
   .nums-grid{grid-template-columns:repeat(2,1fr)}
-  .num-cell{padding:36px 28px}
+  .num-cell{padding:32px 24px}
   .platform-bars{grid-template-columns:1fr}
   .platform-section{padding:48px 24px}
   .cases-grid{grid-template-columns:1fr}
@@ -253,7 +253,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:28px 56px
   .scope-cell{padding:36px 28px}
   .brands-grid{grid-template-columns:repeat(2,1fr)}
   .about-grid{grid-template-columns:1fr;gap:36px}
-  .contact-grid{gap:36px}
+  .contact-grid{grid-template-columns:1fr;gap:36px}
   section{padding:72px 24px}
   footer{padding:22px 24px;flex-direction:column;gap:10px;text-align:center}
 }
@@ -307,7 +307,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:28px 56px
     </div>
 
     <p class="hero-desc">
-      I didn't manage marketing for a 24-location QSR franchise — I <strong>built the entire function from scratch.</strong> Paid media across 4 platforms, product launches, CRM infrastructure, 20+ grand openings, influencer programs, vendor management, and franchise operations — all simultaneously, for <strong>3 brand accounts.</strong>
+      Lead brand and marketing for <strong>Boardwalk Burgers across 24+ locations</strong> — building the entire function from scratch. Paid media, product launches, CRM infrastructure, 20+ grand openings, influencer programs, and franchise operations, while managing <strong>franchise lead generation campaigns for two additional Canadian QSR brands.</strong>
     </p>
 
     <div class="hero-btns">
@@ -338,12 +338,12 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:28px 56px
         <div class="stat-pill-label">Impressions Delivered</div>
       </div>
       <div class="stat-pill">
-        <div class="stat-pill-num">7,800+</div>
-        <div class="stat-pill-label">Franchise Leads</div>
+        <div class="stat-pill-num">725K+</div>
+        <div class="stat-pill-label">Total Clicks</div>
       </div>
       <div class="stat-pill">
-        <div class="stat-pill-num">250+</div>
-        <div class="stat-pill-label">Creators Worked With</div>
+        <div class="stat-pill-num">130K+</div>
+        <div class="stat-pill-label">Conversions</div>
       </div>
     </div>
   </div>
@@ -393,67 +393,81 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:28px 56px
     </div>
     <p class="s-sub">Every number below is tracked — through platform analytics, POS systems, or GA4. No estimates, no rounding up.</p>
   </div>
-  <div class="nums-grid reveal">
-    <div class="num-cell num-hero">
-      <div class="num-big">CA$370K+</div>
-      <div class="num-label">Total ad spend managed across Meta, Google & TikTok</div>
-      <div class="num-note">Oct 2023 – May 2026</div>
+  <div class="reveal">
+    <div class="nums-section">
+      <div class="nums-group-hd">Paid Media</div>
+      <div class="nums-grid">
+        <div class="num-cell">
+          <div class="num-big">CA$370K+</div>
+          <div class="num-label">Total ad spend managed</div>
+          <div class="num-note">Meta · Google · TikTok · LinkedIn</div>
+        </div>
+        <div class="num-cell">
+          <div class="num-big">116M+</div>
+          <div class="num-label">Total impressions delivered</div>
+          <div class="num-note">Meta 66.6M · Google 24.7M · TikTok 25.5M</div>
+        </div>
+        <div class="num-cell">
+          <div class="num-big">725K+</div>
+          <div class="num-label">Total clicks across all platforms</div>
+          <div class="num-note">Meta + Google + TikTok combined</div>
+        </div>
+        <div class="num-cell">
+          <div class="num-big">130K+</div>
+          <div class="num-label">Conversions tracked</div>
+          <div class="num-note">PMAX: 115,977 at CA$0.14 CPC</div>
+        </div>
+      </div>
     </div>
-    <div class="num-cell num-hero">
-      <div class="num-big">116M+</div>
-      <div class="num-label">Total impressions delivered across all platforms</div>
-      <div class="num-note">Meta 66.6M · Google 24.7M · TikTok 25.5M</div>
+    <div class="nums-section">
+      <div class="nums-group-hd">Brand & Growth</div>
+      <div class="nums-grid">
+        <div class="num-cell">
+          <div class="num-big">256%</div>
+          <div class="num-label">YoY growth in website active users</div>
+          <div class="num-note">176K active users · 601% key events growth</div>
+        </div>
+        <div class="num-cell">
+          <div class="num-big">15K+</div>
+          <div class="num-label">Loyalty program members — built from zero</div>
+          <div class="num-note">Diner on Demand · GHL · Freshsales</div>
+        </div>
+        <div class="num-cell">
+          <div class="num-big">250+</div>
+          <div class="num-label">Creators and influencers worked with</div>
+          <div class="num-note">Briefing · UGC · Paid amplification</div>
+        </div>
+        <div class="num-cell">
+          <div class="num-big">20+</div>
+          <div class="num-label">Grand openings & brand activations</div>
+          <div class="num-note">End-to-end per event — full production</div>
+        </div>
+      </div>
     </div>
-    <div class="num-cell num-hero">
-      <div class="num-big">7,800+</div>
-      <div class="num-label">Franchise leads generated across 3 brands</div>
-      <div class="num-note">CA$7.28 avg CPL vs $30–80+ industry</div>
-    </div>
-    <div class="nums-divider"></div>
-    <div class="num-cell">
-      <div class="num-big">256%</div>
-      <div class="num-label">YoY growth in website active users</div>
-      <div class="num-note">176K active users · 601% key events growth</div>
-    </div>
-    <div class="num-cell">
-      <div class="num-big">130K+</div>
-      <div class="num-label">Conversions tracked — Google alone</div>
-      <div class="num-note">PMAX: 115,977 at CA$0.14 CPC</div>
-    </div>
-    <div class="num-cell">
-      <div class="num-big">725K+</div>
-      <div class="num-label">Total clicks driven across all platforms</div>
-      <div class="num-note">Meta + Google + TikTok combined</div>
-    </div>
-    <div class="num-cell">
-      <div class="num-big">15K+</div>
-      <div class="num-label">Loyalty program members — built from zero</div>
-      <div class="num-note">Diner on Demand · GHL · Freshsales</div>
-    </div>
-    <div class="num-cell">
-      <div class="num-big">250+</div>
-      <div class="num-label">Creators and influencers worked with</div>
-      <div class="num-note">Briefing · UGC · Paid amplification</div>
-    </div>
-    <div class="num-cell">
-      <div class="num-big">20+</div>
-      <div class="num-label">Grand openings & brand activations executed</div>
-      <div class="num-note">End-to-end per event — full production</div>
-    </div>
-    <div class="num-cell">
-      <div class="num-big">5.6x</div>
-      <div class="num-label">ROAS — Poutine Day 2026</div>
-      <div class="num-note">$0.89 cost per redemption vs $3–8+ benchmark</div>
-    </div>
-    <div class="num-cell">
-      <div class="num-big">25K+</div>
-      <div class="num-label">CRM contacts built from scratch</div>
-      <div class="num-note">GoHighLevel + Freshsales</div>
-    </div>
-    <div class="num-cell">
-      <div class="num-big">3</div>
-      <div class="num-label">Brand accounts managed simultaneously</div>
-      <div class="num-note">QSR franchises across Canada</div>
+    <div class="nums-section">
+      <div class="nums-group-hd">Franchise Pipeline</div>
+      <div class="nums-grid">
+        <div class="num-cell">
+          <div class="num-big">7,800+</div>
+          <div class="num-label">Franchise leads generated</div>
+          <div class="num-note">Across 3 brands simultaneously</div>
+        </div>
+        <div class="num-cell">
+          <div class="num-big">CA$7.28</div>
+          <div class="num-label">Avg cost per franchise lead</div>
+          <div class="num-note">vs CA$30–80+ industry average</div>
+        </div>
+        <div class="num-cell">
+          <div class="num-big">25K+</div>
+          <div class="num-label">CRM contacts built from scratch</div>
+          <div class="num-note">GoHighLevel + Freshsales</div>
+        </div>
+        <div class="num-cell">
+          <div class="num-big">3</div>
+          <div class="num-label">Brand accounts managed simultaneously</div>
+          <div class="num-note">QSR franchises across Canada</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -531,7 +545,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:28px 56px
         <span class="case-cat">Product Launch · Brand Collab</span>
       </div>
       <div class="case-body">
-        <div class="case-brand">Boardwalk Burgers × Tabasco × Coca-Cola</div>
+        <div class="case-brand">Boardwalk Burgers — Co-brand campaign ft. Tabasco & Coca-Cola</div>
         <h3 class="case-title">Sweet Heat — Canada's First Beef + Chicken Duo</h3>
         <p class="case-desc">Originated the product concept on-site during a shoot. Managed full co-brand compliance with Tabasco and Coca-Cola, secured co-funding from both partners, and executed a 20+ creator influencer party with DJ, branded display, and activations at Oakville location.</p>
         <div class="case-metrics">
@@ -765,11 +779,13 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:28px 56px
         <span class="tag">UberEats</span><span class="tag">DoorDash</span><span class="tag">Skip</span>
         <span class="tag">Constant Contact</span><span class="tag">Mailchimp</span>
       </div>
-    </div>
-    <div class="about-cards reveal">
-      <div class="about-card">
-        <div class="about-card-label">Product Origin Story</div>
-        <div class="about-card-text">Conceptualized <strong>Canada's first sweet and spicy beef + chicken duo burger</strong> during a product shoot — and turned it into the hero of a fully co-funded campaign with Tabasco and Coca-Cola.</div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:16px">
+        <span style="background:rgba(245,166,35,.1);border:1px solid rgba(245,166,35,.3);color:var(--gold);font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:6px 14px">Meta — Certified</span>
+        <span style="background:rgba(245,166,35,.1);border:1px solid rgba(245,166,35,.3);color:var(--gold);font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:6px 14px">Google — Certified</span>
+        <span style="background:var(--bg3);border:1px solid var(--border2);color:var(--muted);font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:6px 14px">TikTok Ads</span>
+        <span style="background:var(--bg3);border:1px solid var(--border2);color:var(--muted);font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:6px 14px">LinkedIn Ads</span>
+        <span style="background:var(--bg3);border:1px solid var(--border2);color:var(--muted);font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:6px 14px">GoHighLevel</span>
+        <span style="background:var(--bg3);border:1px solid var(--border2);color:var(--muted);font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:6px 14px">GA4</span>
       </div>
     </div>
   </div>
@@ -791,6 +807,29 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:28px 56px
           <div class="c-icon" style="font-size:12px;font-weight:800">in</div>
           <div><div class="c-label">LinkedIn</div><div class="c-val">osamaahmed-brandmarketing</div></div>
         </a>
+      </div>
+    </div>
+
+    <div class="reveal">
+      <div style="display:flex;flex-direction:column;gap:20px">
+        <div style="background:var(--bg3);border:1px solid var(--border);border-left:3px solid var(--gold);padding:28px">
+          <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:12px">Currently</div>
+          <div style="font-family:'Archivo',sans-serif;font-weight:700;font-size:18px;color:var(--white);margin-bottom:6px">Brand & Marketing Lead</div>
+          <div style="font-size:14px;color:var(--muted)">Sprint Digital — Boardwalk Burgers<br>24+ franchise locations · Canada · Sep 2024–Present</div>
+        </div>
+        <div style="background:var(--bg3);border:1px solid var(--border);padding:28px">
+          <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:12px">Open To</div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div style="font-size:14px;color:var(--white)">Brand Manager — QSR / Food</div>
+            <div style="font-size:14px;color:var(--white)">Marketing Manager — Franchise</div>
+            <div style="font-size:14px;color:var(--white)">Partner Marketing — UberEats / DoorDash</div>
+            <div style="font-size:14px;color:var(--white)">Sr. Paid Social — Agency</div>
+          </div>
+        </div>
+        <div style="background:var(--bg3);border:1px solid var(--border);padding:20px;display:flex;align-items:center;gap:12px">
+          <div style="width:8px;height:8px;background:#27AE60;border-radius:50%;flex-shrink:0;animation:blink 2s infinite"></div>
+          <div style="font-size:13px;color:var(--muted)">Based in <strong style="color:var(--white)">Toronto / Hamilton, ON</strong> · Open to hybrid and in-office</div>
+        </div>
       </div>
     </div>
 
