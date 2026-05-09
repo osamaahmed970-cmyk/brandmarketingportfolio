@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sweet Heat — Osama Ahmed</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,600;0,700;0,800;0,900;1,800&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#07090D;--bg2:#0C0F16;--bg3:#10141E;--bg4:#161C2A;--gold:#F5A623;--gold2:#C98510;--white:#EDE8E0;--muted:#68748A;--dim:#303848;--border:#151B28;--border2:#1D2436;--green:#27AE60;--red:#E84545}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--white);font-family:'Space Grotesk',sans-serif;font-size:16px;line-height:1.6;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:900;display:flex;align-items:center;justify-content:space-between;padding:20px 56px;background:rgba(7,9,13,.92);backdrop-filter:blur(24px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:'Archivo',sans-serif;font-weight:900;font-size:19px;color:var(--white);text-decoration:none}
+.nav-logo span{color:var(--gold)}
+.nav-back{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s}
+.nav-back:hover{color:var(--white)}
+.nav-back:hover svg{transform:translateX(-3px)}
+.nav-back svg{transition:transform .2s}
+.nav-cta{background:var(--gold);color:#000;font-family:'Archivo',sans-serif;font-weight:800;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:10px 20px;text-decoration:none}
+
+.cs-hero{padding:130px 56px 80px;border-bottom:1px solid var(--border);position:relative;overflow:hidden}
+.cs-hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(245,166,35,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(245,166,35,.02) 1px,transparent 1px);background-size:56px 56px;pointer-events:none}
+.cs-breadcrumb{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:24px}
+.cs-breadcrumb a{color:var(--muted);text-decoration:none;transition:color .2s}
+.cs-breadcrumb a:hover{color:var(--gold)}
+.cs-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+.cs-tag{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;padding:5px 12px;border:1px solid var(--border2);color:var(--muted)}
+.cs-tag.gold{border-color:rgba(245,166,35,.3);color:var(--gold);background:rgba(245,166,35,.05)}
+.cs-tag.red{border-color:rgba(232,69,60,.3);color:#E84545;background:rgba(232,69,60,.05)}
+.cs-title{font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(36px,5vw,72px);letter-spacing:-3px;line-height:.95;color:var(--white);margin-bottom:20px}
+.cs-title span{color:var(--gold)}
+.cs-sub{font-size:18px;color:var(--muted);line-height:1.7;max-width:680px;margin-bottom:48px}
+.cs-hero-stats{display:flex;gap:1px;background:var(--border);border:1px solid var(--border);width:fit-content}
+.cs-stat{background:var(--bg2);padding:24px 36px;min-width:140px}
+.cs-stat-num{font-family:'Archivo',sans-serif;font-weight:900;font-size:32px;color:var(--gold);letter-spacing:-1.5px;line-height:1;margin-bottom:4px}
+.cs-stat-label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+
+.cs-body{max-width:1200px;margin:0 auto;padding:80px 56px}
+.cs-section{margin-bottom:80px}
+.s-label{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.s-line{width:24px;height:2px;background:var(--gold)}
+.s-tag-el{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+.cs-section-title{font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(24px,3vw,36px);letter-spacing:-1.5px;color:var(--white);margin-bottom:20px}
+.cs-text{font-size:16px;color:var(--muted);line-height:1.85;margin-bottom:16px}
+.cs-text strong{color:var(--white);font-weight:600}
+
+.insight{background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--gold);padding:28px 32px;margin:28px 0}
+.insight-label{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.insight-text{font-size:15px;color:var(--muted);line-height:1.7}
+.insight-text strong{color:var(--white)}
+
+/* PRODUCT ORIGIN */
+.origin-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin:32px 0}
+.origin-quote{font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(20px,2.5vw,28px);letter-spacing:-1px;line-height:1.3;color:var(--white);border-left:3px solid var(--gold);padding-left:24px;margin-bottom:16px}
+.origin-quote span{color:var(--gold)}
+
+/* COLLAB BADGES */
+.collab-row{display:flex;gap:12px;flex-wrap:wrap;margin:24px 0}
+.collab-badge{display:flex;align-items:center;gap:10px;background:var(--bg2);border:1px solid var(--border2);padding:14px 20px}
+.collab-badge-name{font-family:'Archivo',sans-serif;font-weight:700;font-size:14px;color:var(--white)}
+.collab-badge-role{font-size:11px;color:var(--muted)}
+
+/* CAMPAIGN IMAGES — portrait grid */
+.camp-portrait-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:32px}
+.camp-img{display:block;overflow:hidden;border:1px solid var(--border);aspect-ratio:3/4;transition:border-color .3s}
+.camp-img:hover{border-color:var(--gold)}
+.camp-img img{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(.85);transition:filter .4s,transform .5s}
+.camp-img:hover img{filter:brightness(1);transform:scale(1.04)}
+.camp-img-label{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:6px;padding:0 2px}
+
+/* EVENT SECTION */
+.event-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;margin:32px 0}
+.event-details{display:flex;flex-direction:column;gap:14px}
+.event-item{display:flex;align-items:flex-start;gap:14px;padding:16px;background:var(--bg2);border:1px solid var(--border)}
+.event-icon{font-size:20px;flex-shrink:0;margin-top:2px}
+.event-item-title{font-family:'Archivo',sans-serif;font-weight:700;font-size:13px;color:var(--white);margin-bottom:3px}
+.event-item-desc{font-size:12px;color:var(--muted);line-height:1.5}
+
+/* METRICS */
+.metrics-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-top:32px}
+.metric-cell{background:var(--bg2);padding:32px 28px}
+.metric-num{font-family:'Archivo',sans-serif;font-weight:900;font-size:36px;color:var(--gold);letter-spacing:-1.5px;line-height:1;margin-bottom:6px}
+.metric-label{font-size:13px;color:var(--muted);font-weight:500}
+.metric-note{font-size:10px;color:var(--dim);margin-top:4px;font-family:'Space Mono',monospace}
+
+.learnings{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px}
+.learning{background:var(--bg2);border:1px solid var(--border);padding:24px}
+.learning-icon{font-size:20px;margin-bottom:12px;display:block}
+.learning-title{font-family:'Archivo',sans-serif;font-weight:700;font-size:15px;color:var(--white);margin-bottom:8px}
+.learning-text{font-size:13px;color:var(--muted);line-height:1.65}
+
+.case-nav{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:80px;padding-top:48px;border-top:1px solid var(--border)}
+.case-nav-link{display:flex;flex-direction:column;padding:24px;background:var(--bg2);border:1px solid var(--border);text-decoration:none;transition:border-color .2s,transform .2s}
+.case-nav-link:hover{border-color:var(--gold);transform:translateY(-2px)}
+.case-nav-dir{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.case-nav-title{font-family:'Archivo',sans-serif;font-weight:700;font-size:16px;color:var(--white)}
+.case-nav-link.next{text-align:right}
+
+footer{background:var(--bg);border-top:1px solid var(--border);padding:28px 56px;display:flex;justify-content:space-between;align-items:center}
+.foot-copy{font-size:12px;color:var(--muted);font-family:'Space Mono',monospace}
+.foot-copy span{color:var(--gold)}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:900px){
+  nav{padding:16px 24px}
+  .cs-hero{padding:100px 24px 56px}
+  .cs-body{padding:56px 24px}
+  .cs-hero-stats{flex-wrap:wrap}
+  .origin-grid{grid-template-columns:1fr}
+  .camp-portrait-grid{grid-template-columns:repeat(2,1fr)}
+  .event-grid{grid-template-columns:1fr}
+  .metrics-grid{grid-template-columns:1fr 1fr}
+  .learnings{grid-template-columns:1fr}
+  .case-nav{grid-template-columns:1fr}
+  footer{padding:22px 24px;flex-direction:column;gap:10px;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Osama<span>.</span></a>
+  <a href="index.html#work" class="nav-back">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    All Work
+  </a>
+  <a href="mailto:osamaahmed.ext@gmail.com" class="nav-cta">Hire Me</a>
+</nav>
+
+<div class="cs-hero">
+  <div class="cs-hero-grid"></div>
+  <div class="cs-breadcrumb"><a href="index.html">Portfolio</a> / Case Study</div>
+  <div class="cs-tags">
+    <span class="cs-tag gold">Product Launch</span>
+    <span class="cs-tag red">Co-Brand Collab</span>
+    <span class="cs-tag">Influencer Event</span>
+    <span class="cs-tag">Meta Ads</span>
+    <span class="cs-tag">360° Campaign</span>
+    <span class="cs-tag">QSR / Franchise</span>
+  </div>
+  <h1 class="cs-title">Sweet<br><span>Heat</span></h1>
+  <p class="cs-sub">A product I helped create. A campaign I ran end-to-end. Canada's first sweet and spicy beef + chicken duo burger — in co-brand collaboration with Tabasco and Coca-Cola, launched with a 20+ creator influencer event.</p>
+  <div class="cs-hero-stats">
+    <div class="cs-stat"><div class="cs-stat-num">1.54M</div><div class="cs-stat-label">Meta Reach</div></div>
+    <div class="cs-stat"><div class="cs-stat-num">20+</div><div class="cs-stat-label">Creators</div></div>
+    <div class="cs-stat"><div class="cs-stat-num">3</div><div class="cs-stat-label">Brand Partners</div></div>
+    <div class="cs-stat"><div class="cs-stat-num">360°</div><div class="cs-stat-label">Campaign Scope</div></div>
+  </div>
+  <a href="https://www.instagram.com/p/DRxWDW3Acj4/?img_index=1" target="_blank">
+    <img style="width:100%;max-height:520px;object-fit:cover;display:block;border:1px solid var(--border);margin-top:48px;filter:brightness(.9);transition:filter .4s;cursor:pointer" 
+      src="https://lh3.googleusercontent.com/d/1iehaTxLLcnQl4LWCkv_TPlCWGkdN-7r9" 
+      alt="Sweet Heat Campaign KV"
+      onerror="this.style.display='none'"
+      onmouseover="this.style.filter='brightness(1)'"
+      onmouseout="this.style.filter='brightness(.9)'">
+  </a>
+</div>
+
+<div class="cs-body">
+
+  <!-- PRODUCT ORIGIN -->
+  <div class="cs-section reveal">
+    <div class="s-label"><div class="s-line"></div><span class="s-tag-el">01 — Product Origin</span></div>
+    <h2 class="cs-section-title">I Didn't Just Run This Campaign. I Started It.</h2>
+    <div class="origin-grid">
+      <div>
+        <div class="origin-quote">"The client wanted a sweet and spicy <span>crispy chicken burger.</span> I suggested we add a beef patty — and combine both into one."</div>
+        <p class="cs-text">During the product shoot, Osama tried the original crispy chicken concept and proposed a beef patty variant on the spot. When both were tested together, the idea evolved further: <strong>combine the crispy chicken and beef patty into a single dual-protein burger</strong> — a format that had never been done in Canada — with Tabasco's sweet and spicy sauce as the flavor anchor.</p>
+        <p class="cs-text">Building on the success of the earlier BIG 3 campaign (which doubled existing burgers and resonated strongly with customers), this concept carried the same energy — bold, craveable, and unique to Boardwalk.</p>
+      </div>
+      <div>
+        <div class="insight" style="margin:0">
+          <div class="insight-label">Product Concept</div>
+          <div class="insight-text" style="font-size:17px;line-height:1.6"><strong>Canada's first sweet and spicy beef + chicken duo burger.</strong><br><br>Concept originated on-site during a product shoot. Pitched, approved, and launched as the hero product of the Sweet Heat campaign.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CO-BRAND -->
+  <div class="cs-section reveal">
+    <div class="s-label"><div class="s-line"></div><span class="s-tag-el">02 — Brand Collaboration</span></div>
+    <h2 class="cs-section-title">Tabasco × Coca-Cola × Boardwalk Burgers</h2>
+    <p class="cs-text">Sweet Heat was a <strong>three-way co-brand partnership</strong>. Managing this meant more than just running ads — it required aligning creative assets, copy, and visual identity across three distinct brand guidelines simultaneously, while also negotiating and managing <strong>co-marketing funding</strong> from both Tabasco and Coca-Cola to support the campaign.</p>
+    <div class="collab-row">
+      <div class="collab-badge">
+        <div>
+          <div class="collab-badge-name">Tabasco (Frank's Red Hot)</div>
+          <div class="collab-badge-role">Flavor partner · Co-funded · Brand compliance managed</div>
+        </div>
+      </div>
+      <div class="collab-badge">
+        <div>
+          <div class="collab-badge-name">Coca-Cola</div>
+          <div class="collab-badge-role">Beverage partner · Co-funded · Brand compliance managed</div>
+        </div>
+      </div>
+      <div class="collab-badge">
+        <div>
+          <div class="collab-badge-name">Boardwalk Burgers</div>
+          <div class="collab-badge-role">Primary brand · 24+ locations · Campaign owner</div>
+        </div>
+      </div>
+    </div>
+    <div class="insight">
+      <div class="insight-label">What Co-Brand Management Involved</div>
+      <div class="insight-text">Coordinating creative approvals across all three partners. Ensuring logo usage, color, and tone met each brand's standards. Managing the co-funding agreements and making sure marketing dollars from Tabasco and Coca-Cola were allocated and tracked correctly.</div>
+    </div>
+  </div>
+
+  <!-- CAMPAIGN EXECUTION -->
+  <div class="cs-section reveal">
+    <div class="s-label"><div class="s-line"></div><span class="s-tag-el">03 — Campaign Execution</span></div>
+    <h2 class="cs-section-title">360° — Concept to Execution</h2>
+    <p class="cs-text">The campaign ran across every channel available — paid social, OOH, print, in-store, and influencer. Every asset was developed in-house: concept, script, shoot direction, copy, and distribution.</p>
+    <div class="camp-portrait-grid">
+      <div>
+        <a href="https://www.instagram.com/p/DRxWDW3Acj4/?img_index=1" target="_blank" class="camp-img">
+          <img src="https://lh3.googleusercontent.com/d/1iehaTxLLcnQl4LWCkv_TPlCWGkdN-7r9" alt="Sweet Heat KV" onerror="this.parentElement.style.background='var(--bg3)'">
+        </a>
+        <div class="camp-img-label">Hero KV — Launch Creative</div>
+      </div>
+      <div>
+        <a href="https://www.instagram.com/p/DSt4YUPDqg0/" target="_blank" class="camp-img">
+          <img src="https://lh3.googleusercontent.com/d/1wbah3WM057dB0YYMkDAxG8ZnWXOMRDlP" alt="Sweet Heat Event" onerror="this.parentElement.style.background='var(--bg3)'">
+        </a>
+        <div class="camp-img-label">Influencer Event — Oakville</div>
+      </div>
+      <div>
+        <a href="https://www.instagram.com/p/DSu1WyMDW_G/" target="_blank" class="camp-img">
+          <img src="https://lh3.googleusercontent.com/d/1zVxty7KGKojKhCsuOZahLSBunbVXUB2k" alt="Sweet Heat Event 2" onerror="this.parentElement.style.background='var(--bg3)'">
+        </a>
+        <div class="camp-img-label">Creator Activations</div>
+      </div>
+      <div>
+        <a href="https://www.instagram.com/p/DSvOONcDzTx/" target="_blank" class="camp-img">
+          <img src="https://lh3.googleusercontent.com/d/1AOIY24936FYPZn1nOqoGqC7FbukUsHHI" alt="Sweet Heat Event 3" onerror="this.parentElement.style.background='var(--bg3)'">
+        </a>
+        <div class="camp-img-label">Event Coverage</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INFLUENCER EVENT -->
+  <div class="cs-section reveal">
+    <div class="s-label"><div class="s-line"></div><span class="s-tag-el">04 — Influencer Event</span></div>
+    <h2 class="cs-section-title">20+ Creators. One Launch Party. Oakville.</h2>
+    <div class="event-grid">
+      <div>
+        <p class="cs-text">To launch Sweet Heat, a dedicated influencer event was organized at the Boardwalk Burgers Oakville location. 20+ creators were invited for an exclusive first taste — building buzz before the public launch and generating a wave of authentic UGC content.</p>
+        <p class="cs-text">The event was designed to be shareable — every detail was built to generate content, from the branded product display to the on-site activations.</p>
+      </div>
+      <div class="event-details">
+        <div class="event-item">
+          <div class="event-icon">🎵</div>
+          <div>
+            <div class="event-item-title">DJ on-site</div>
+            <div class="event-item-desc">Live DJ set creating energy and ambient content backdrop</div>
+          </div>
+        </div>
+        <div class="event-item">
+          <div class="event-icon">🍔</div>
+          <div>
+            <div class="event-item-title">Branded product display</div>
+            <div class="event-item-desc">Custom Sweet Heat display built for high-impact visual content</div>
+          </div>
+        </div>
+        <div class="event-item">
+          <div class="event-icon">🎁</div>
+          <div>
+            <div class="event-item-title">Giveaways & games</div>
+            <div class="event-item-desc">Interactive activations to drive engagement and content creation</div>
+          </div>
+        </div>
+        <div class="event-item">
+          <div class="event-icon">📱</div>
+          <div>
+            <div class="event-item-title">20+ creators</div>
+            <div class="event-item-desc">Food, lifestyle, and local community creators across platforms</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PERFORMANCE -->
+  <div class="cs-section reveal">
+    <div class="s-label"><div class="s-line"></div><span class="s-tag-el">05 — Performance</span></div>
+    <h2 class="cs-section-title">Campaign Results</h2>
+    <p class="cs-text">Paid social ran on Meta across awareness and engagement objectives, amplifying the influencer content and product launch creative simultaneously across all franchise locations.</p>
+    <div class="metrics-grid">
+      <div class="metric-cell">
+        <div class="metric-num">1.54M</div>
+        <div class="metric-label">Meta reach</div>
+        <div class="metric-note">Awareness campaigns — all locations</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-num">20+</div>
+        <div class="metric-label">Creators at launch event</div>
+        <div class="metric-note">UGC generated across platforms</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-num">3</div>
+        <div class="metric-label">Brand partners managed</div>
+        <div class="metric-note">Boardwalk · Tabasco · Coca-Cola</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-num">CA$6,985</div>
+        <div class="metric-label">Meta awareness spend</div>
+        <div class="metric-note">Launch + ongoing awareness flights</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-num">360°</div>
+        <div class="metric-label">Campaign scope</div>
+        <div class="metric-note">Paid · OOH · Print · In-store · Influencer</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-num">Co-funded</div>
+        <div class="metric-label">Marketing dollars secured</div>
+        <div class="metric-note">From Tabasco and Coca-Cola partners</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LEARNINGS -->
+  <div class="cs-section reveal">
+    <div class="s-label"><div class="s-line"></div><span class="s-tag-el">06 — Key Learnings</span></div>
+    <h2 class="cs-section-title">What This Campaign Proved</h2>
+    <div class="learnings">
+      <div class="learning">
+        <span class="learning-icon">✅</span>
+        <div class="learning-title">Product Thinking is a Marketing Skill</div>
+        <div class="learning-text">The most impactful contribution to this campaign happened before a single ad was written — in the product shoot. Marketers who understand the product deeply enough to improve it create differentiation that no ad budget can buy.</div>
+      </div>
+      <div class="learning">
+        <span class="learning-icon">✅</span>
+        <div class="learning-title">Co-Brand Events Create Earned Media</div>
+        <div class="learning-text">The influencer launch event generated authentic UGC across 20+ creators simultaneously — content that would have cost significantly more to produce through traditional production. Events as media strategy.</div>
+      </div>
+      <div class="learning">
+        <span class="learning-icon">💡</span>
+        <div class="learning-title">Co-Funding Extends Campaign Reach</div>
+        <div class="learning-text">Securing marketing dollars from brand partners means the campaign spend effectively goes further. Building these co-brand relationships requires compliance management overhead but delivers real budget leverage.</div>
+      </div>
+      <div class="learning">
+        <span class="learning-icon">💡</span>
+        <div class="learning-title">Brand Compliance at Scale</div>
+        <div class="learning-text">Managing creative approvals across three distinct brand standards simultaneously requires systematic workflows. Building approval templates and clear brand checkpoints from the start prevents revision cycles.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="case-nav reveal">
+    <a href="poutine-day.html" class="case-nav-link">
+      <div class="case-nav-dir">← Previous</div>
+      <div class="case-nav-title">National Poutine Day — 5.6x ROAS</div>
+    </a>
+    <a href="bw-select.html" class="case-nav-link next">
+      <div class="case-nav-dir">Next →</div>
+      <div class="case-nav-title">Boardwalk Select — UGC-Led Value Menu Launch</div>
+    </a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="foot-copy">© 2026 <span>Osama Ahmed</span> — Built on real data, not templates.</div>
+  <div class="foot-copy">Toronto, ON</div>
+</footer>
+
+<script>
+const reveals = document.querySelectorAll('.reveal');
+const ro = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.07 });
+reveals.forEach(el => ro.observe(el));
+</script>
+</body>
+</html>

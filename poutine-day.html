@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>National Poutine Day — Osama Ahmed</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,600;0,700;0,800;0,900;1,800&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --gold: #F5A623;
+    --gold-soft: rgba(245,166,35,0.1);
+    --gold-line: rgba(245,166,35,0.25);
+    --dark: #090C10;
+    --dark2: #0F1318;
+    --dark3: #161B23;
+    --dark4: #1C2230;
+    --border: rgba(255,255,255,0.055);
+    --text: #DCE0E8;
+    --muted: rgba(220,224,232,0.42);
+    --white: #ffffff;
+  }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Space Grotesk', sans-serif; background: var(--dark); color: var(--text); overflow-x: hidden; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 60px;
+    background: rgba(9,12,16,0.85); backdrop-filter: blur(24px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo { font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 1rem; color: var(--white); text-decoration: none; }
+  .nav-logo span { color: var(--gold); }
+  .nav-back { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .nav-back:hover { color: var(--white); }
+
+  /* HERO */
+  .cs-hero {
+    padding: 130px 60px 70px;
+    background: linear-gradient(180deg, #0f0800 0%, var(--dark) 100%);
+    border-bottom: 1px solid var(--border);
+    position: relative; overflow: hidden;
+  }
+  .cs-hero::before {
+    content: '';
+    position: absolute; top: -100px; right: -100px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(245,166,35,0.07) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .cs-breadcrumb {
+    font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 20px;
+  }
+  .cs-breadcrumb a { color: var(--gold); text-decoration: none; }
+  .cs-breadcrumb a:hover { text-decoration: underline; }
+
+  .cs-hero-title {
+    font-family: 'Archivo', sans-serif;
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 800; line-height: 1.05;
+    letter-spacing: -0.03em; color: var(--white);
+    max-width: 700px; margin-bottom: 20px;
+  }
+  .cs-hero-title span { color: var(--gold); }
+
+  .cs-hero-sub {
+    font-size: 1rem; color: var(--muted); line-height: 1.65;
+    max-width: 620px; margin-bottom: 32px;
+  }
+
+  .cs-tags { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 48px; }
+  .cs-tag {
+    background: var(--dark3); border: 1px solid var(--border);
+    border-radius: 4px; padding: 6px 14px;
+    font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted);
+  }
+  .cs-tag.highlight { background: var(--gold-soft); border-color: var(--gold-line); color: var(--gold); }
+
+  /* MEGA HERO STATS */
+  .hero-results {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 680px;
+    background: var(--gold-soft);
+    border: 1px solid var(--gold-line);
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+  .hero-result-item {
+    padding: 20px 16px;
+    border-right: 1px solid var(--gold-line);
+    text-align: center;
+  }
+  .hero-result-item:last-child { border-right: none; }
+  .hero-result-val {
+    font-family: 'Archivo', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--gold);
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+  .hero-result-label {
+    font-size: 0.65rem;
+    color: rgba(245,166,35,0.7);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 10px;
+    line-height: 1.4;
+  }
+  /* CASE STUDY HERO GRID */
+  .cs-hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 48px;
+    align-items: flex-start;
+  }
+  .cs-hero-image {
+    position: sticky;
+    top: 90px;
+    margin-top: 20px;
+  }
+  .cs-hero-image img {
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid var(--gold-line);
+    display: block;
+    box-shadow: 0 0 0 1px rgba(245,166,35,0.1), 0 8px 32px rgba(0,0,0,0.5);
+  }
+  .cs-hero-image-caption {
+    font-size: 0.65rem;
+    color: var(--muted);
+    margin-top: 10px;
+    text-align: center;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    line-height: 1.5;
+  }
+
+  /* CONTENT WRAPPER */
+  .cs-content { max-width: 920px; margin: 0 auto; padding: 80px 60px; }
+
+  /* SECTION WITH NUMBERED ANCHOR */
+  .cs-section { margin-bottom: 88px; }
+  .section-num {
+    font-family: 'Archivo', sans-serif;
+    font-size: 7rem;
+    font-weight: 800;
+    color: rgba(245,166,35,0.09);
+    line-height: 1;
+    letter-spacing: -0.05em;
+    margin-bottom: -16px;
+    user-select: none;
+  }
+  .cs-section-label {
+    font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--gold); font-weight: 600; margin-bottom: 10px;
+  }
+  .cs-section-title {
+    font-family: 'Archivo', sans-serif; font-size: 1.6rem; font-weight: 700;
+    color: var(--white); margin-bottom: 22px; letter-spacing: -0.02em; line-height: 1.2;
+  }
+  .cs-section p {
+    font-size: 0.95rem; color: var(--muted); line-height: 1.75; margin-bottom: 16px;
+  }
+  .cs-section p strong { color: var(--text); font-weight: 500; }
+  .cs-section-divider {
+    border: none; border-top: 1px solid var(--border); margin: 48px 0;
+  }
+
+  /* PERFORMANCE STAT CARDS */
+  .perf-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+    margin-top: 24px;
+  }
+  .perf-card {
+    background: var(--dark3); border: 1px solid var(--border);
+    border-radius: 12px; padding: 24px;
+    transition: border-color 0.2s;
+  }
+  .perf-card:hover { border-color: var(--gold-line); }
+  .perf-card-label {
+    font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 8px;
+  }
+  .perf-card-val {
+    font-family: 'Archivo', sans-serif; font-size: 2rem; font-weight: 800;
+    color: var(--gold); line-height: 1; letter-spacing: -0.03em;
+  }
+  .perf-card-sub { font-size: 0.72rem; color: var(--muted); margin-top: 6px; line-height: 1.4; }
+
+  /* CHART CONTAINERS */
+  .chart-wrap {
+    background: var(--dark3);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px 28px 20px;
+    margin-top: 28px;
+  }
+  .chart-header {
+    display: flex; align-items: baseline; gap: 12px; margin-bottom: 20px;
+  }
+  .chart-title {
+    font-family: 'Archivo', sans-serif;
+    font-size: 0.9rem; font-weight: 700; color: var(--white);
+  }
+  .chart-subtitle {
+    font-size: 0.72rem; color: var(--muted);
+  }
+  .chart-canvas-wrap { position: relative; height: 240px; }
+  .chart-note {
+    font-size: 0.68rem; color: var(--muted); margin-top: 14px;
+    letter-spacing: 0.04em; text-align: center;
+  }
+
+  /* BUDGET LAYOUT */
+  .budget-visual-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    align-items: center;
+    margin-top: 28px;
+  }
+  .budget-donut-wrap {
+    background: var(--dark3);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px;
+  }
+  .budget-donut-canvas-wrap { position: relative; height: 220px; }
+  .budget-legend {
+    background: var(--dark3);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px;
+    display: flex; flex-direction: column; gap: 16px;
+  }
+  .budget-legend-title {
+    font-family: 'Archivo', sans-serif;
+    font-size: 0.8rem; font-weight: 700; color: var(--white);
+    margin-bottom: 4px;
+  }
+  .budget-legend-item {
+    display: flex; align-items: center; gap: 12px;
+  }
+  .budget-legend-dot {
+    width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0;
+  }
+  .budget-legend-name {
+    font-size: 0.82rem; color: var(--text); flex: 1;
+  }
+  .budget-legend-pct {
+    font-family: 'Archivo', sans-serif;
+    font-size: 0.88rem; font-weight: 700; color: var(--gold);
+  }
+
+  /* AD STRUCTURE WITH CREATIVE PREVIEW */
+  .ad-structure-with-preview {
+    display: grid;
+    grid-template-columns: 1fr 260px;
+    gap: 28px;
+    align-items: start;
+    margin-top: 28px;
+  }
+  .ad-structure-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;
+  }
+  .ad-platform-card {
+    background: var(--dark2); border: 1px solid var(--border);
+    border-radius: 12px; padding: 24px;
+  }
+  .ad-platform-header {
+    display: flex; align-items: center; gap: 10px; margin-bottom: 16px;
+  }
+  .ad-platform-icon { font-size: 1.4rem; }
+  .ad-platform-name {
+    font-family: 'Archivo', sans-serif; font-size: 0.95rem; font-weight: 700; color: var(--white);
+  }
+  .ad-platform-budget {
+    margin-left: auto; background: var(--gold-soft);
+    border: 1px solid var(--gold-line); color: var(--gold);
+    font-size: 0.7rem; font-weight: 600; padding: 3px 10px; border-radius: 4px;
+  }
+  .ad-structure-note {
+    font-size: 0.75rem; color: var(--muted); margin-bottom: 12px; font-style: italic;
+  }
+  .ad-format-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .ad-format-item {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 0.82rem; color: var(--text);
+  }
+  .ad-format-item::before {
+    content: ''; width: 6px; height: 6px;
+    border-radius: 50%; background: var(--gold); flex-shrink: 0;
+  }
+
+  /* CREATIVE SAMPLE THUMBNAIL */
+  .creative-sample {
+    position: sticky;
+    top: 90px;
+  }
+  .creative-sample img {
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    display: block;
+  }
+  .creative-sample-caption {
+    font-size: 0.65rem;
+    color: var(--muted);
+    text-align: center;
+    margin-top: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    line-height: 1.5;
+  }
+
+  /* LEARNINGS */
+  .learnings-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;
+    margin-top: 24px;
+  }
+  .learning-card {
+    background: var(--dark3); border: 1px solid var(--border);
+    border-radius: 12px; padding: 24px;
+  }
+  .learning-card.positive { border-left: 3px solid var(--gold); }
+  .learning-card.improve { border-left: 3px solid rgba(100,150,255,0.5); }
+  .learning-icon { font-size: 1.2rem; margin-bottom: 10px; }
+  .learning-title {
+    font-family: 'Archivo', sans-serif; font-size: 0.9rem;
+    font-weight: 700; color: var(--white); margin-bottom: 8px;
+  }
+  .learning-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.6; }
+
+  /* BOTTOM NAV */
+  .cs-bottom-nav {
+    padding: 40px 60px; border-top: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+    background: var(--dark2);
+  }
+  .btn-ghost {
+    display: inline-block; border: 1px solid var(--border); color: var(--text);
+    padding: 12px 24px; border-radius: 6px; font-size: 0.82rem;
+    text-decoration: none; transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-ghost:hover { border-color: rgba(255,255,255,0.2); color: var(--white); }
+  .btn-primary {
+    display: inline-block; background: var(--gold); color: var(--dark);
+    padding: 12px 24px; border-radius: 6px; font-weight: 600;
+    font-size: 0.82rem; text-decoration: none; transition: opacity 0.2s;
+  }
+  .btn-primary:hover { opacity: 0.88; }
+
+  .fade-in { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 900px) {
+    nav { padding: 18px 24px; }
+    .cs-hero { padding: 100px 24px 50px; }
+    .cs-hero-grid { grid-template-columns: 1fr; }
+    .cs-hero-image { display: none; }
+    .hero-result-item { padding: 20px 16px; }
+    .cs-content { padding: 50px 24px; }
+    .section-num { font-size: 4rem; }
+    .perf-grid { grid-template-columns: repeat(2, 1fr); }
+    .budget-visual-layout { grid-template-columns: 1fr; }
+    .ad-structure-with-preview { grid-template-columns: 1fr; }
+    .creative-sample { position: static; max-width: 280px; margin: 0 auto 24px; }
+    .ad-structure-grid { grid-template-columns: 1fr; }
+    .learnings-grid { grid-template-columns: 1fr; }
+    .cs-bottom-nav { flex-direction: column; gap: 16px; text-align: center; padding: 32px 24px; }
+  }
+  @media (max-width: 480px) {
+    .perf-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">Osama<span>.</span></a>
+    <a href="index.html" class="nav-back">← Back to Portfolio</a>
+  </nav>
+
+  <!-- CASE STUDY HERO -->
+  <div class="cs-hero">
+    <div class="cs-hero-grid">
+      <div>
+        <div class="cs-breadcrumb"><a href="index.html">Portfolio</a> / Case Study</div>
+        <h1 class="cs-hero-title">National Poutine Day<br><span>Boardwalk Burgers</span></h1>
+        <p class="cs-hero-sub">A multi-platform paid social campaign across 23 franchise locations, driving in-store redemptions through hyper-local targeting on a 2-day promotional window.</p>
+        <div class="cs-tags">
+          <span class="cs-tag highlight">Performance Campaign</span>
+          <span class="cs-tag">Meta Ads</span>
+          <span class="cs-tag">TikTok Ads</span>
+          <span class="cs-tag">YouTube / PMAX</span>
+          <span class="cs-tag">Instagram</span>
+          <span class="cs-tag">QSR / Franchise</span>
+          <span class="cs-tag">April 2026</span>
+        </div>
+
+        <!-- KEY RESULTS — 2×2 GRID -->
+        <div class="hero-results">
+          <div class="hero-result-item">
+            <div class="hero-result-val">4,500+</div>
+            <div class="hero-result-label">In-Store<br>Redemptions</div>
+          </div>
+          <div class="hero-result-item">
+            <div class="hero-result-val">$0.89</div>
+            <div class="hero-result-label">Cost per<br>Redemption</div>
+          </div>
+          <div class="hero-result-item">
+            <div class="hero-result-val">5.6x</div>
+            <div class="hero-result-label">ROAS</div>
+          </div>
+          <div class="hero-result-item">
+            <div class="hero-result-val">2 Days</div>
+            <div class="hero-result-label">Campaign<br>Window</div>
+          </div>
+        </div>
+      </div>
+
+      <figure class="cs-hero-image">
+        <img src="https://lh3.googleusercontent.com/d/1m2OhCxb8Ek547phZ2WABIsxhDtZT78vC" alt="Campaign creative — static ad format">
+        <figcaption class="cs-hero-image-caption">Campaign Creative<br>Static Format</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <div class="cs-content">
+
+    <!-- 01 — BRIEF & STRATEGY -->
+    <div class="cs-section fade-in">
+      <div class="section-num">01</div>
+      <div class="cs-section-label">The Foundation</div>
+      <div class="cs-section-title">Drive In-Store Traffic on National Poutine Day</div>
+      <p>Boardwalk Burgers wanted to capitalise on National Poutine Day (April 11) with a limited-time offer — <strong>$5 poutine instead of the regular $7.49 price</strong> — across 23 Canadian franchise locations. The goal was maximum in-store foot traffic within a tight 2-day window, with no e-commerce tracking available. Redemptions were tracked via POS system across all locations.</p>
+      <p>The campaign needed to work at two levels simultaneously: <strong>national brand awareness</strong> to drive broad reach, and <strong>hyper-local targeting</strong> to ensure each franchise location reached its immediate market.</p>
+      <p>Rather than running one blanket national campaign, the strategy was to <strong>build a unique ad set per location on Meta</strong> — 22 individual ad sets, each geo-targeted around a specific franchise — while using Instagram, TikTok, and YouTube for broader national reach to amplify awareness at scale. Each platform was assigned a distinct role in the funnel.</p>
+    </div>
+
+    <!-- 02 — PLATFORM MIX & CREATIVE STRUCTURE -->
+    <div class="cs-section fade-in">
+      <div class="section-num">02</div>
+      <div class="cs-section-label">Platform Mix & Structure</div>
+      <div class="cs-section-title">Four Platforms, One Cohesive Campaign</div>
+      <p>Meta carried the heaviest load for local conversion intent at 66% of total spend. TikTok and YouTube focused on awareness and reach among a younger demographic. Instagram bridged both — driving traffic to the locations page for users already familiar with the brand.</p>
+
+      <!-- MEDIA MIX DONUT -->
+      <div class="budget-visual-layout">
+        <div class="budget-donut-wrap">
+          <div class="chart-header">
+            <span class="chart-title">Media Mix by Platform</span>
+          </div>
+          <div class="budget-donut-canvas-wrap">
+            <canvas id="budgetChart"></canvas>
+          </div>
+        </div>
+        <div class="budget-legend">
+          <div class="budget-legend-title">Platform Allocation</div>
+          <div class="budget-legend-item">
+            <div class="budget-legend-dot" style="background:#F5A623;"></div>
+            <span class="budget-legend-name">Meta (Facebook)</span>
+            <span class="budget-legend-pct">66%</span>
+          </div>
+          <div class="budget-legend-item">
+            <div class="budget-legend-dot" style="background:#E8944D;"></div>
+            <span class="budget-legend-name">Instagram</span>
+            <span class="budget-legend-pct">12.5%</span>
+          </div>
+          <div class="budget-legend-item">
+            <div class="budget-legend-dot" style="background:#69C9D0;"></div>
+            <span class="budget-legend-name">TikTok</span>
+            <span class="budget-legend-pct">9%</span>
+          </div>
+          <div class="budget-legend-item">
+            <div class="budget-legend-dot" style="background:#FF8080;"></div>
+            <span class="budget-legend-name">YouTube / PMAX</span>
+            <span class="budget-legend-pct">12.5%</span>
+          </div>
+        </div>
+      </div>
+
+      <hr class="cs-section-divider">
+
+      <!-- AD STRUCTURE + CREATIVE PREVIEW -->
+      <div class="cs-section-label" style="margin-top: 0;">Creative Formats by Platform</div>
+      <div class="ad-structure-with-preview">
+        <div class="ad-structure-grid">
+          <div class="ad-platform-card">
+            <div class="ad-platform-header">
+              <span class="ad-platform-icon">📘</span>
+              <span class="ad-platform-name">Meta</span>
+              <span class="ad-platform-budget">66%</span>
+            </div>
+            <div class="ad-structure-note">22 ad sets — one per franchise location</div>
+            <ul class="ad-format-list">
+              <li class="ad-format-item">Static ad</li>
+              <li class="ad-format-item">Carousel ad</li>
+              <li class="ad-format-item">Lifestyle video with VO (food shots)</li>
+              <li class="ad-format-item">Animated graphic video with VO</li>
+            </ul>
+          </div>
+          <div class="ad-platform-card">
+            <div class="ad-platform-header">
+              <span class="ad-platform-icon">📷</span>
+              <span class="ad-platform-name">Instagram</span>
+              <span class="ad-platform-budget">12.5%</span>
+            </div>
+            <div class="ad-structure-note">3 ads targeting all locations</div>
+            <ul class="ad-format-list">
+              <li class="ad-format-item">Static ad</li>
+              <li class="ad-format-item">Animated video with VO</li>
+              <li class="ad-format-item">Lifestyle video with VO (food shots)</li>
+            </ul>
+          </div>
+          <div class="ad-platform-card">
+            <div class="ad-platform-header">
+              <span class="ad-platform-icon">🎵</span>
+              <span class="ad-platform-name">TikTok</span>
+              <span class="ad-platform-budget">9%</span>
+            </div>
+            <div class="ad-structure-note">2 ads — all locations</div>
+            <ul class="ad-format-list">
+              <li class="ad-format-item">Animated video with VO</li>
+              <li class="ad-format-item">Lifestyle video with VO (food shots)</li>
+            </ul>
+          </div>
+          <div class="ad-platform-card">
+            <div class="ad-platform-header">
+              <span class="ad-platform-icon">▶️</span>
+              <span class="ad-platform-name">YouTube / PMAX</span>
+              <span class="ad-platform-budget">12.5%</span>
+            </div>
+            <div class="ad-structure-note">Performance Max — all locations</div>
+            <ul class="ad-format-list">
+              <li class="ad-format-item">Animated video with VO</li>
+              <li class="ad-format-item">Lifestyle video with VO (food shots)</li>
+            </ul>
+          </div>
+        </div>
+
+        <figure class="creative-sample">
+          <img src="https://lh3.googleusercontent.com/d/1m2OhCxb8Ek547phZ2WABIsxhDtZT78vC" alt="Sample creative — static ad format">
+          <div class="creative-sample-caption">Sample Creative<br>Static Ad Format</div>
+        </figure>
+      </div>
+    </div>
+
+    <!-- 03 — PERFORMANCE -->
+    <div class="cs-section fade-in">
+      <div class="section-num">03</div>
+      <div class="cs-section-label">Performance</div>
+      <div class="cs-section-title">4,500+ Redemptions in 48 Hours</div>
+      <p>Redemptions were tracked via POS system across all 23 locations. With 4,500+ confirmed in-store redemptions at the $5 promotional price point, the campaign generated <strong>$22,500 in direct trackable revenue</strong>. Real basket value was almost certainly higher as most customers purchased additional items alongside the poutine.</p>
+
+      <!-- Overall results -->
+      <div class="perf-grid">
+        <div class="perf-card">
+          <div class="perf-card-label">Total Redemptions</div>
+          <div class="perf-card-val">4,500+</div>
+          <div class="perf-card-sub">POS-tracked across 23 locations over 2 days</div>
+        </div>
+        <div class="perf-card">
+          <div class="perf-card-label">Cost Per Redemption</div>
+          <div class="perf-card-val">$0.89</div>
+          <div class="perf-card-sub">Total spend ÷ 4,500 redemptions</div>
+        </div>
+        <div class="perf-card">
+          <div class="perf-card-label">ROAS</div>
+          <div class="perf-card-val">5.6x</div>
+          <div class="perf-card-sub">$22,500 direct revenue on total ad spend</div>
+        </div>
+      </div>
+
+      <hr class="cs-section-divider">
+
+      <!-- Meta deep dive -->
+      <div class="cs-section-label" style="margin-top:0;">Meta Campaign — April 7–12, 2026</div>
+      <p style="margin-bottom: 0;">The Meta campaign ran under the Engagement objective optimised for link clicks. Static creative consistently outperformed video on cost efficiency — a key learning for future promotional campaigns.</p>
+
+      <!-- Meta campaign-level stats -->
+      <div class="perf-grid">
+        <div class="perf-card">
+          <div class="perf-card-label">Avg. Cost Per Click</div>
+          <div class="perf-card-val">$0.14</div>
+          <div class="perf-card-sub">Campaign average across all 22 ad sets</div>
+        </div>
+        <div class="perf-card">
+          <div class="perf-card-label">Avg. CTR</div>
+          <div class="perf-card-val">3.65%</div>
+          <div class="perf-card-sub">Strong scroll-stop performance across formats</div>
+        </div>
+        <div class="perf-card">
+          <div class="perf-card-label">Avg. CPM</div>
+          <div class="perf-card-val">$4.08</div>
+          <div class="perf-card-sub">Efficient reach for a short-window promo</div>
+        </div>
+      </div>
+
+      <!-- Creative Format Performance chart -->
+      <div class="chart-wrap">
+        <div class="chart-header">
+          <span class="chart-title">Creative Format Performance</span>
+          <span class="chart-subtitle">Static vs. Video — Meta campaign</span>
+        </div>
+        <div class="chart-canvas-wrap">
+          <canvas id="locationChart"></canvas>
+        </div>
+        <p class="chart-note">Static led on cost efficiency; video formats drove higher engagement — informing the creative balance on future flights</p>
+      </div>
+
+      <p style="margin-top: 28px;">Performance varied meaningfully across regions — select markets outperformed the campaign average significantly on both click efficiency and engagement, while others tracked closer to baseline. This variance confirmed that hyper-local targeting and per-market bid strategies matter: uniform national settings would have left efficiency gains on the table. Markets with stronger brand familiarity consistently converted at lower cost, reinforcing the value of sustained always-on presence alongside burst promotions.</p>
+    </div>
+
+    <!-- KEY LEARNINGS -->
+    <div class="cs-section fade-in">
+      <div class="cs-section-label">Key Learnings</div>
+      <div class="cs-section-title">What This Campaign Taught Us</div>
+      <div class="learnings-grid">
+        <div class="learning-card positive">
+          <div class="learning-icon">✅</div>
+          <div class="learning-title">Static Beats Video on CPC</div>
+          <div class="learning-desc">Static ads consistently delivered lower cost per click than video formats. For short-window promotional campaigns where speed and cost efficiency matter, static should lead the creative strategy.</div>
+        </div>
+        <div class="learning-card positive">
+          <div class="learning-icon">✅</div>
+          <div class="learning-title">Location-Level Ad Sets Drive Better Results</div>
+          <div class="learning-desc">Running individual ad sets per franchise location — rather than one national campaign — allowed for precise geo-targeting and budget control. Winnipeg and Hamilton were top performers, a pattern worth leveraging in future flights.</div>
+        </div>
+        <div class="learning-card improve">
+          <div class="learning-icon">💡</div>
+          <div class="learning-title">Align Objective to Goal</div>
+          <div class="learning-desc">The campaign ran on an Engagement/Traffic objective but the real goal was in-store visits. For future campaigns, testing a Store Traffic or Conversions objective could reduce friction between click and redemption.</div>
+        </div>
+        <div class="learning-card improve">
+          <div class="learning-icon">💡</div>
+          <div class="learning-title">Consider Advantage+ for Regional Scale</div>
+          <div class="learning-desc">Several ad sets used narrow interest targeting. Enabling Advantage+ Audience on future campaigns could expand reach beyond defined interests while maintaining cost efficiency — worth A/B testing.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- BOTTOM NAV -->
+  <div class="cs-bottom-nav">
+    <a href="index.html" class="btn-ghost">← Back to Portfolio</a>
+    <a href="mailto:osamaahmed.ext@gmail.com" class="btn-primary">Work Together →</a>
+  </div>
+
+  <script>
+    // Fade-in on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.06 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Shared chart defaults
+    Chart.defaults.font.family = "'DM Sans', sans-serif";
+    Chart.defaults.color = 'rgba(220,224,232,0.5)';
+
+    // Chart 2 — Media Mix Donut (percentages only, no dollar figures)
+    new Chart(document.getElementById('budgetChart'), {
+      type: 'doughnut',
+      data: {
+        labels: ['Meta', 'Instagram', 'TikTok', 'YouTube / PMAX'],
+        datasets: [{
+          data: [66, 12.5, 9, 12.5],
+          backgroundColor: ['#F5A623', '#E8944D', '#69C9D0', '#FF8080'],
+          borderColor: '#161B23',
+          borderWidth: 3,
+          hoverOffset: 6
+        }]
+      },
+      options: {
+        cutout: '70%',
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: (ctx) => `  ${ctx.label}: ${ctx.parsed}%`
+            },
+            backgroundColor: '#1C2230',
+            borderColor: 'rgba(255,255,255,0.08)',
+            borderWidth: 1,
+            padding: 12,
+            titleColor: '#ffffff',
+            bodyColor: 'rgba(220,224,232,0.7)'
+          }
+        }
+      }
+    });
+
+    // Creative Format Performance — Static vs Video
+    new Chart(document.getElementById('locationChart'), {
+      type: 'bar',
+      data: {
+        labels: ['Cost Efficiency', 'Engagement Rate'],
+        datasets: [
+          {
+            label: 'Static',
+            data: [8.5, 4.5],
+            backgroundColor: '#F5A623',
+            borderColor: '#F5A623',
+            borderRadius: 6,
+            borderSkipped: false
+          },
+          {
+            label: 'Video',
+            data: [4.5, 7.5],
+            backgroundColor: 'rgba(245,166,35,0.28)',
+            borderColor: 'rgba(245,166,35,0.55)',
+            borderWidth: 1.5,
+            borderRadius: 6,
+            borderSkipped: false
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        interaction: { mode: 'index', intersect: false },
+        plugins: {
+          legend: {
+            labels: {
+              color: 'rgba(220,224,232,0.65)',
+              usePointStyle: true,
+              pointStyleWidth: 10,
+              padding: 20
+            }
+          },
+          tooltip: {
+            backgroundColor: '#1C2230',
+            borderColor: 'rgba(255,255,255,0.08)',
+            borderWidth: 1,
+            padding: 12,
+            titleColor: '#ffffff',
+            bodyColor: 'rgba(220,224,232,0.8)',
+            callbacks: {
+              label: (ctx) => {
+                const v = ctx.parsed.y;
+                const isEfficiency = ctx.dataIndex === 0;
+                const label = v >= 7 ? (isEfficiency ? 'More Efficient' : 'Higher Engagement')
+                            : v >= 5 ? 'Average'
+                            : (isEfficiency ? 'Less Efficient' : 'Lower Engagement');
+                return `  ${ctx.dataset.label}: ${label}`;
+              }
+            }
+          }
+        },
+        scales: {
+          x: {
+            ticks: { color: 'rgba(220,224,232,0.6)', font: { size: 13, weight: '500' } },
+            grid: { color: 'rgba(255,255,255,0.04)' },
+            border: { color: 'rgba(255,255,255,0.06)' }
+          },
+          y: {
+            min: 0,
+            max: 10,
+            ticks: {
+              color: 'rgba(220,224,232,0.55)',
+              stepSize: 2.5,
+              callback: (v) => {
+                if (v === 0)  return 'Lower';
+                if (v === 5)  return 'Average';
+                if (v === 10) return 'Higher';
+                return '';
+              }
+            },
+            grid: { color: 'rgba(255,255,255,0.04)' },
+            border: { color: 'rgba(255,255,255,0.06)' }
+          }
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>

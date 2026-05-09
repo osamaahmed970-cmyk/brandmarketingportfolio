@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Boardwalk Select — Osama Ahmed</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,600;0,700;0,800;0,900;1,800&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#07090D;--bg2:#0C0F16;--bg3:#10141E;--bg4:#161C2A;--gold:#F5A623;--gold2:#C98510;--white:#EDE8E0;--muted:#68748A;--dim:#303848;--border:#151B28;--border2:#1D2436;--green:#27AE60}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--white);font-family:'Space Grotesk',sans-serif;font-size:16px;line-height:1.6;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:900;display:flex;align-items:center;justify-content:space-between;padding:20px 56px;background:rgba(7,9,13,.92);backdrop-filter:blur(24px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:'Archivo',sans-serif;font-weight:900;font-size:19px;color:var(--white);text-decoration:none}
+.nav-logo span{color:var(--gold)}
+.nav-back{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s}
+.nav-back:hover{color:var(--white)}
+.nav-back svg{transition:transform .2s}
+.nav-back:hover svg{transform:translateX(-3px)}
+.nav-cta{background:var(--gold);color:#000;font-family:'Archivo',sans-serif;font-weight:800;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:10px 20px;text-decoration:none}
+
+/* HERO */
+.cs-hero{padding:130px 56px 80px;border-bottom:1px solid var(--border);position:relative;overflow:hidden}
+.cs-hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(245,166,35,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(245,166,35,.02) 1px,transparent 1px);background-size:56px 56px;pointer-events:none}
+.cs-breadcrumb{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:24px}
+.cs-breadcrumb a{color:var(--muted);text-decoration:none;transition:color .2s}
+.cs-breadcrumb a:hover{color:var(--gold)}
+.cs-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+.cs-tag{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;padding:5px 12px;border:1px solid var(--border2);color:var(--muted)}
+.cs-tag.gold{border-color:rgba(245,166,35,.3);color:var(--gold);background:rgba(245,166,35,.05)}
+.cs-title{font-family:'Archivo',sans-serif;font-weight:900;font-size:clamp(36px,5vw,72px);letter-spacing:-3px;line-height:.95;color:var(--white);margin-bottom:20px}
+.cs-title span{color:var(--gold)}
+.cs-sub{font-size:18px;color:var(--muted);line-height:1.7;max-width:680px;margin-bottom:48px}
+.cs-hero-stats{display:flex;gap:1px;background:var(--border);border:1px solid var(--border);width:fit-content}
+.cs-stat{background:var(--bg2);padding:24px 36px;min-width:140px}
+.cs-stat-num{font-family:'Archivo',sans-serif;font-weight:900;font-size:32px;color:var(--gold);letter-spacing:-1.5px;line-height:1;margin-bottom:4px}
+.cs-stat-label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+
+/* HERO IMAGE */
+.cs-hero-img{width:100%;max-height:520px;object-fit:cover;display:block;border:1px solid var(--border);margin-top:48px;filter:brightness(.9);transition:filter .4s}
+.cs-hero-img:hover{filter:brightness(1)}
+
+/* CONTENT */
+.cs-body{max-width:1200px;margin:0 auto;padding:80px 56px}
+.cs-section{margin-bottom:80px}
+.s-label{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.s-line{width:24px;height:2px;background:var(--gold)}
+.s-tag{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+.cs-section-title{font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(24px,3vw,36px);letter-spacing:-1.5px;color:var(--white);margin-bottom:20px}
+.cs-text{font-size:16px;color:var(--muted);line-height:1.85;margin-bottom:16px}
+.cs-text strong{color:var(--white);font-weight:600}
+
+/* CAMPAIGN IMAGES */
+.camp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:32px}
+.camp-img{display:block;overflow:hidden;border:1px solid var(--border);aspect-ratio:4/5;transition:border-color .3s}
+.camp-img:hover{border-color:var(--gold)}
+.camp-img img{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(.85);transition:filter .4s,transform .5s}
+.camp-img:hover img{filter:brightness(1);transform:scale(1.04)}
+.camp-img-label{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:6px;padding:0 2px}
+
+/* INSIGHT BOX */
+.insight{background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--gold);padding:28px 32px;margin:28px 0}
+.insight-label{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.insight-text{font-size:15px;color:var(--muted);line-height:1.7}
+.insight-text strong{color:var(--white)}
+
+/* UGC SECTION */
+.ugc-intro{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;margin-bottom:40px}
+.ugc-stat-big{font-family:'Archivo',sans-serif;font-weight:900;font-size:64px;color:var(--gold);letter-spacing:-3px;line-height:1;margin-bottom:8px}
+.ugc-stat-label{font-size:14px;color:var(--muted);line-height:1.6}
+
+/* CREATOR GRID */
+.creator-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:32px}
+.creator-card{display:block;position:relative;overflow:hidden;border:1px solid var(--border);aspect-ratio:9/16;text-decoration:none;transition:border-color .3s,transform .3s}
+.creator-card:hover{border-color:var(--gold);transform:translateY(-4px)}
+.creator-card img{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(.8);transition:filter .4s,transform .5s}
+.creator-card:hover img{filter:brightness(1);transform:scale(1.05)}
+.creator-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(7,9,13,.9) 0%,transparent 50%);display:flex;align-items:flex-end;padding:14px}
+.creator-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:40px;height:40px;background:rgba(245,166,35,.9);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:background .2s,transform .2s}
+.creator-card:hover .creator-play{background:var(--gold);transform:translate(-50%,-50%) scale(1.1)}
+.creator-label{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,166,35,.8)}
+
+/* METRICS TABLE */
+.metrics-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-top:32px}
+.metric-cell{background:var(--bg2);padding:32px 28px}
+.metric-num{font-family:'Archivo',sans-serif;font-weight:900;font-size:36px;color:var(--gold);letter-spacing:-1.5px;line-height:1;margin-bottom:6px}
+.metric-label{font-size:13px;color:var(--muted);font-weight:500}
+.metric-note{font-size:10px;color:var(--dim);margin-top:4px;font-family:'Space Mono',monospace}
+
+/* LEARNINGS */
+.learnings{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px}
+.learning{background:var(--bg2);border:1px solid var(--border);padding:24px}
+.learning-icon{font-size:20px;margin-bottom:12px;display:block}
+.learning-title{font-family:'Archivo',sans-serif;font-weight:700;font-size:15px;color:var(--white);margin-bottom:8px}
+.learning-text{font-size:13px;color:var(--muted);line-height:1.65}
+
+/* NAV BETWEEN CASES */
+.case-nav{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:80px;padding-top:48px;border-top:1px solid var(--border)}
+.case-nav-link{display:flex;flex-direction:column;padding:24px;background:var(--bg2);border:1px solid var(--border);text-decoration:none;transition:border-color .2s,transform .2s}
+.case-nav-link:hover{border-color:var(--gold);transform:translateY(-2px)}
+.case-nav-dir{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.case-nav-title{font-family:'Archivo',sans-serif;font-weight:700;font-size:16px;color:var(--white)}
+.case-nav-link.next{text-align:right}
+
+/* FOOTER */
+footer{background:var(--bg);border-top:1px solid var(--border);padding:28px 56px;display:flex;justify-content:space-between;align-items:center}
+.foot-copy{font-size:12px;color:var(--muted);font-family:'Space Mono',monospace}
+.foot-copy span{color:var(--gold)}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:900px){
+  nav{padding:16px 24px}
+  .cs-hero{padding:100px 24px 56px}
+  .cs-body{padding:56px 24px}
+  .cs-hero-stats{flex-wrap:wrap}
+  .camp-grid{grid-template-columns:repeat(2,1fr)}
+  .creator-grid{grid-template-columns:repeat(3,1fr)}
+  .metrics-grid{grid-template-columns:1fr 1fr}
+  .learnings{grid-template-columns:1fr}
+  .ugc-intro{grid-template-columns:1fr}
+  .case-nav{grid-template-columns:1fr}
+  footer{padding:22px 24px;flex-direction:column;gap:10px;text-align:center}
+}
+@media(max-width:560px){
+  .creator-grid{grid-template-columns:repeat(2,1fr)}
+  .cs-hero-stats{display:grid;grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Osama<span>.</span></a>
+  <a href="index.html#work" class="nav-back">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    All Work
+  </a>
+  <a href="mailto:osamaahmed.ext@gmail.com" class="nav-cta">Hire Me</a>
+</nav>
+
+<!-- HERO -->
+<div class="cs-hero">
+  <div class="cs-hero-grid"></div>
+  <div class="cs-breadcrumb"><a href="index.html">Portfolio</a> / Case Study</div>
+  <div class="cs-tags">
+    <span class="cs-tag gold">Value Menu Launch</span>
+    <span class="cs-tag">UGC Strategy</span>
+    <span class="cs-tag">Meta Ads</span>
+    <span class="cs-tag">Creator Program</span>
+    <span class="cs-tag">QSR / Franchise</span>
+    <span class="cs-tag">2026</span>
+  </div>
+  <h1 class="cs-title">Boardwalk<br><span>Select</span></h1>
+  <p class="cs-sub">A creator-led campaign for a new value menu tier — where UGC content outperformed branded creative by 2x and drove 62K clicks at CA$0.18 CPC across 1.08M unique reach.</p>
+  <div class="cs-hero-stats">
+    <div class="cs-stat"><div class="cs-stat-num">62K</div><div class="cs-stat-label">Link Clicks</div></div>
+    <div class="cs-stat"><div class="cs-stat-num">CA$0.18</div><div class="cs-stat-label">Avg CPC</div></div>
+    <div class="cs-stat"><div class="cs-stat-num">1.08M</div><div class="cs-stat-label">Unique Reach</div></div>
+    <div class="cs-stat"><div class="cs-stat-num">CA$0.14</div><div class="cs-stat-label">UGC CPC</div></div>
+    <div class="cs-stat"><div class="cs-stat-num">CA$11.5K</div><div class="cs-stat-label">Total Spend</div></div>
+  </div>
+  <a href="https://www.instagram.com/p/DVJcz8XjUbA/?img_index=1" target="_blank">
+    <img class="cs-hero-img" src="https://lh3.googleusercontent.com/d/1F90K0E0DN3uYhbyRJ0aRj2QOCnKkBu5C" alt="Boardwalk Select Campaign Visual"
+      onerror="this.style.display='none'">
+  </a>
+</div>
+
+<!-- BODY -->
+<div class="cs-body">
+
+  <!-- BACKGROUND -->
+  <div class="cs-section reveal">
+    <div class="s-label"><div class="s-line"></div><span class="s-tag">01 — Background</span></div>
+    <h2 class="cs-section-title">A New Value Tier for a Growing Franchise</h2>
+    <p class="cs-text">Boardwalk Burgers identified a gap in its menu — customers wanted quality at an accessible price point. The answer was <strong>Boardwalk Select</strong>: a curated value menu tier designed to drive frequency and capture price-conscious customers without cheapening the brand.</p>
+    <p class="cs-text">The launch required a campaign that felt <strong>authentic, not discounted</strong>. Rather than running generic promotional ads, the strategy leaned into the creator community — letting real customers tell the story through UGC content, then amplifying the best-performing pieces as paid ads.</p>
+    <div class="insight">
+      <div class="insight-label">Strategic Decision</div>
+      <div class="insight-text">Instead of leading with branded creative, we launched with <strong>creator content as the primary paid asset</strong> — a UGC-first strategy that kept the campaign feeling organic while scaling reach through paid distribution.</div>
+    </div>
+  </div>
+
+  <!-- CAMPAIGN CREATIVE -->
+  <div class="cs-section reveal">
+    <div class="s-label"><div class="s-line"></div><span class="s-tag">02 — Campaign Creative</span></div>
+    <h2 class="cs-section-title">The Creative Suite</h2>
+    <p class="cs-text">The campaign ran across 3 Meta campaigns with distinct creative strategies. A hero KV anchored the brand identity, supported by lifestyle content and UGC from the Boardwalk Select Squad. Each asset was A/B tested against the others to identify what resonated most with local audiences.</p>
+    <div class="camp-grid">
+      <div>
+        <a href="https://www.instagram.com/p/DVJcz8XjUbA/?img_index=1" target="_blank" class="camp-img">
+          <img src="https://lh3.googleusercontent.com/d/1F90K0E0DN3uYhbyRJ0aRj2QOCnKkBu5C" alt="Boardwalk Select KV" onerror="this.parentElement.style.background='var(--bg3)'">
+        </a>
+        <div class="camp-img-label">Hero KV — Brand Launch</div>
+      </div>
+      <div>
+        <a href="https://www.instagram.com/p/DV9W0rVDXLk/" target="_blank" class="camp-img">
+          <img src="https://lh3.googleusercontent.com/d/15_qkyQGsCad1DZCEqBuJKX3jcgxGQBka" alt="Boardwalk Select Campaign 1" onerror="this.parentElement.style.background='var(--bg3)'">
+        </a>
+        <div class="camp-img-label">Campaign Creative 01</div>
+      </div>
+      <div>
+        <a href="https://www.instagram.com/p/DVl645zjUTP/?img_index=1" target="_blank" class="camp-img">
+          <img src="https://lh3.googleusercontent.com/d/1MrY5e7Jrx0M2pk9hG2I4N-vFh_xdyvms" alt="Boardwalk Select Campaign 2" onerror="this.parentElement.style.background='var(--bg3)'">
+        </a>
+        <div class="camp-img-label">Campaign Creative 02</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- UGC SECTION -->
+  <div class="cs-section reveal">
+    <div class="s-label"><div class="s-line"></div><span class="s-tag">03 — Creator Program</span></div>
+    <h2 class="cs-section-title">Boardwalk Select Squad — UGC to Paid Pipeline</h2>
+    <div class="ugc-intro">
+      <div>
+        <p class="cs-text">The <strong>Boardwalk Select Squad</strong> is an ongoing creator program built to generate authentic UGC from real customers — food creators, lifestyle influencers, and local community figures. Creators visited locations, filmed their experience, and posted organically.</p>
+        <p class="cs-text">The best-performing organic posts were then <strong>whitelisted and boosted as paid ads</strong> — a UGC-to-paid pipeline that kept costs low and authenticity high. Creator content consistently delivered <strong>CA$0.14 CPC vs CA$0.29 for branded creative</strong> — a 2x efficiency advantage.</p>
+      </div>
+      <div>
+        <div class="ugc-stat-big">2x</div>
+        <div class="ugc-stat-label">More efficient than branded creative<br><span style="color:var(--gold);font-weight:600">CA$0.14 CPC</span> vs CA$0.29 for standard ads<br><br>5 creators · 5 unique content pieces · all boosted as paid media</div>
+      </div>
+    </div>
+
+    <p class="cs-text" style="margin-bottom:16px">Click any creator post to view on Instagram:</p>
+    <div class="creator-grid">
+      <a class="creator-card" href="https://www.instagram.com/p/DWM_kiPkh-e/" target="_blank">
+        <img src="https://lh3.googleusercontent.com/d/11PmzuOsb5l8VH6KW5wlAut6V-cGCjRxt" alt="Creator 1" onerror="this.parentElement.style.background='var(--bg3)'">
+        <div class="creator-overlay"></div>
+        <div class="creator-play">
+          <svg width="12" height="14" viewBox="0 0 12 14" fill="#000"><path d="M1 1l10 6-10 6V1z"/></svg>
+        </div>
+      </a>
+      <a class="creator-card" href="https://www.instagram.com/p/DWKpvvKAETJ/" target="_blank">
+        <img src="https://lh3.googleusercontent.com/d/1m3kSu_e7w5FwxN6ldKZCsOQjDAnURv_5" alt="Creator 2" onerror="this.parentElement.style.background='var(--bg3)'">
+        <div class="creator-overlay"></div>
+        <div class="creator-play">
+          <svg width="12" height="14" viewBox="0 0 12 14" fill="#000"><path d="M1 1l10 6-10 6V1z"/></svg>
+        </div>
+      </a>
+      <a class="creator-card" href="https://www.instagram.com/p/DWG6canDlB3/" target="_blank">
+        <img src="https://lh3.googleusercontent.com/d/1jnEZDf8tZhatjlOajxLr8NArruNYlplx" alt="Creator 3" onerror="this.parentElement.style.background='var(--bg3)'">
+        <div class="creator-overlay"></div>
+        <div class="creator-play">
+          <svg width="12" height="14" viewBox="0 0 12 14" fill="#000"><path d="M1 1l10 6-10 6V1z"/></svg>
+        </div>
+      </a>
+      <a class="creator-card" href="https://www.instagram.com/p/DVrlprAj453/" target="_blank">
+        <img src="https://lh3.googleusercontent.com/d/1zuHyETzkVvGeIttdE9m8FxAE_H0J4Pun" alt="Creator 4" onerror="this.parentElement.style.background='var(--bg3)'">
+        <div class="creator-overlay"></div>
+        <div class="creator-play">
+          <svg width="12" height="14" viewBox="0 0 12 14" fill="#000"><path d="M1 1l10 6-10 6V1z"/></svg>
+        </div>
+      </a>
+      <a class="creator-card" href="https://www.instagram.com/p/DVi8vO_iQp5/" target="_blank">
+        <img src="https://lh3.googleusercontent.com/d/1fRqgLBPQCDbTegCX7lNWAK_XDQtRKxVS" alt="Creator 5" onerror="this.parentElement.style.background='var(--bg3)'">
+        <div class="creator-overlay"></div>
+        <div class="creator-play">
+          <svg width="12" height="14" viewBox="0 0 12 14" fill="#000"><path d="M1 1l10 6-10 6V1z"/></svg>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- PERFORMANCE -->
+  <div class="cs-section reveal">
+    <div class="s-label"><div class="s-line"></div><span class="s-tag">04 — Performance</span></div>
+    <h2 class="cs-section-title">Campaign Results</h2>
+    <p class="cs-text">Three campaigns ran simultaneously — a UGC-led engagement campaign, a branded engagement campaign, and a retargeting flight. The UGC campaign dominated on efficiency across every metric.</p>
+    <div class="metrics-grid">
+      <div class="metric-cell">
+        <div class="metric-num">62K</div>
+        <div class="metric-label">Total link clicks</div>
+        <div class="metric-note">Across all 3 campaigns</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-num">CA$0.18</div>
+        <div class="metric-label">Weighted avg CPC</div>
+        <div class="metric-note">UGC campaign: CA$0.14</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-num">1.08M</div>
+        <div class="metric-label">Unique reach</div>
+        <div class="metric-note">CA$11,567 total spend</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-num">2.39M</div>
+        <div class="metric-label">Total impressions</div>
+        <div class="metric-note">All campaigns combined</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-num">CA$0.14</div>
+        <div class="metric-label">UGC campaign CPC</div>
+        <div class="metric-note">vs CA$0.29 branded — 2x better</div>
+      </div>
+      <div class="metric-cell">
+        <div class="metric-num">36K</div>
+        <div class="metric-label">Clicks from UGC alone</div>
+        <div class="metric-note">57% of total clicks</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LEARNINGS -->
+  <div class="cs-section reveal">
+    <div class="s-label"><div class="s-line"></div><span class="s-tag">05 — Key Learnings</span></div>
+    <h2 class="cs-section-title">What This Campaign Proved</h2>
+    <div class="learnings">
+      <div class="learning">
+        <span class="learning-icon">✅</span>
+        <div class="learning-title">UGC Beats Branded on Cost Efficiency</div>
+        <div class="learning-text">Creator content delivered CA$0.14 CPC vs CA$0.29 for branded creative — a consistent 2x efficiency advantage. For value-focused campaigns, authentic content outperforms polished brand assets every time.</div>
+      </div>
+      <div class="learning">
+        <span class="learning-icon">✅</span>
+        <div class="learning-title">Whitelisting Amplifies Organic Success</div>
+        <div class="learning-text">Running paid media through creator accounts rather than the brand page preserved the authentic feel of the content while unlocking paid reach. The result was high performance at low cost.</div>
+      </div>
+      <div class="learning">
+        <span class="learning-icon">💡</span>
+        <div class="learning-title">Build a Standing Creator Roster</div>
+        <div class="learning-text">The Select Squad model — an always-on pool of creators generating content — is more scalable and cost-effective than one-off influencer activations. Relationships compound over time.</div>
+      </div>
+      <div class="learning">
+        <span class="learning-icon">💡</span>
+        <div class="learning-title">Test UGC Across More Campaign Types</div>
+        <div class="learning-text">UGC was used for engagement and traffic campaigns. Given the efficiency advantage, testing creator content in conversion and lead gen objectives could yield significant results.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CASE NAV -->
+  <div class="case-nav reveal">
+    <a href="sweet-heat.html" class="case-nav-link">
+      <div class="case-nav-dir">← Previous</div>
+      <div class="case-nav-title">Sweet Heat — Canada's First Beef + Chicken Duo</div>
+    </a>
+    <a href="poutine-day.html" class="case-nav-link next">
+      <div class="case-nav-dir">Next →</div>
+      <div class="case-nav-title">National Poutine Day — 5.6x ROAS</div>
+    </a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="foot-copy">© 2026 <span>Osama Ahmed</span> — Built on real data, not templates.</div>
+  <div class="foot-copy">Toronto, ON</div>
+</footer>
+
+<script>
+const reveals = document.querySelectorAll('.reveal');
+const ro = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.07 });
+reveals.forEach(el => ro.observe(el));
+</script>
+</body>
+</html>

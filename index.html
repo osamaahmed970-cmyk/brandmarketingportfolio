@@ -213,6 +213,21 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:28px 56px
 .foot-copy{font-size:12px;color:var(--muted);font-family:'Space Mono',monospace}
 .foot-copy span{color:var(--gold)}
 
+
+/* Clickable case cards */
+.case[onclick]:hover .case-body::after {
+  content: 'View Case Study →';
+  display: block;
+  margin-top: 14px;
+  font-family: 'Archivo', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.case[onclick] .case-body { position: relative; }
+
 /* REVEAL */
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
@@ -509,7 +524,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:28px 56px
   <div class="cases-grid">
 
     <!-- SWEET HEAT -->
-    <div class="case reveal">
+    <div class="case reveal" onclick="location.href='sweet-heat.html'" style="cursor:pointer">
       <div class="case-img-wrap">
         <img src="https://lh3.googleusercontent.com/d/1iehaTxLLcnQl4LWCkv_TPlCWGkdN-7r9" alt="Sweet Heat Campaign"
           onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#180500,#3d0f00)'">
@@ -565,7 +580,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:28px 56px
     </div>
 
     <!-- BW SELECT -->
-    <div class="case reveal">
+    <div class="case reveal" onclick="location.href='bw-select.html'" style="cursor:pointer">
       <div class="case-img-wrap">
         <img src="https://lh3.googleusercontent.com/d/1F90K0E0DN3uYhbyRJ0aRj2QOCnKkBu5C" alt="Boardwalk Select"
           onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#050a14,#0d1a2e)'">
@@ -602,7 +617,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:28px 56px
     </div>
 
     <!-- POUTINE DAY -->
-    <div class="case reveal reveal-delay-2">
+    <div class="case reveal reveal-delay-2" onclick="location.href='poutine-day.html'" style="cursor:pointer">
       <div class="case-img-wrap">
         <img src="https://lh3.googleusercontent.com/d/1m2OhCxb8Ek547phZ2WABIsxhDtZT78vC" alt="National Poutine Day"
           onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#1a0a00,#3d1f00)'">
